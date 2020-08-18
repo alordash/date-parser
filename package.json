@@ -1,0 +1,20 @@
+{
+  "name": "date-parser",
+  "version": "0.0.1",
+  "description": "Extracts date from human message.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alordash/date-parser.git"
+  },
+  "author": "alordash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alordash/date-parser/issues"
+  },
+  "homepage": "https://github.com/alordash/date-parser#readme",
+  "keywords": ["date", "parse"]
+}
