@@ -16,5 +16,11 @@
     "url": "https://github.com/alordash/date-parser/issues"
   },
   "homepage": "https://github.com/alordash/date-parser#readme",
-  "keywords": ["date", "parse"]
+  "keywords": [
+    "date",
+    "parse"
+  ],
+  "dependencies": {
+    "@alordash/damerau-levenshtein": "^1.0.7"
+  }
 }
