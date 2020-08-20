@@ -1,6 +1,6 @@
-﻿META;;;;""
-is_regex;;;;""
-0;;;;""
+﻿META;;;;
+is_regex;;;;
+0;;;;
 text;regex char;errors limit;value;priority
 секунда;s;2;0;1
 минута;m;2;0;1
@@ -40,4 +40,4 @@ text;regex char;errors limit;value;priority
 четверг;d;1;4;1
 пятница;d;1;5;1
 суббота;d;2;6;1
-воскресенье;d;3;7;""
+воскресенье;d;3;7;0
