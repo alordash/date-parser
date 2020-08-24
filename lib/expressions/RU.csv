@@ -56,3 +56,4 @@ text;regex char;errors limit;value;maximum
 день;O;0;3;0
 вечер;O;1;4;0
 пол;H;0;0;0
+без;B;0;0;0
