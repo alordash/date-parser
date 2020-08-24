@@ -48,3 +48,4 @@ text;regex char;errors limit;value;maximum
 на;P;0;0;0
 числа;S;1;0;0
 и;I;0;0;0
+следующий;F;3;0;0
