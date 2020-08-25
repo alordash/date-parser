@@ -57,3 +57,5 @@ text;regex char;errors limit;value;maximum
 вечер;O;1;4;0
 пол;H;0;0;0
 без;B;0;0;0
+завтра;A;1;1;0
+послезавтра;A;2;2;0
