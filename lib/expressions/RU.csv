@@ -7,8 +7,6 @@ text;regex char;errors limit;value;maximum
 час;h;0;0;24
 часа;h;0;0;24
 часов;h;0;0;24
-день;d;0;0;0
-дня;d;0;0;0
 неделя;w;2;0;7
 месяц;K;0;0;0
 месяца;K;0;0;0
@@ -62,3 +60,4 @@ text;regex char;errors limit;value;maximum
 через;C;0;0;0
 с;V;0;0;0
 до;Z;0;0;0
+каждый;E;3;0;0
