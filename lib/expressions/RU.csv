@@ -60,4 +60,5 @@ text;regex char;errors limit;value;maximum
 через;C;0;0;0
 с;V;0;0;0
 до;Z;0;0;0
-каждый;E;3;0;0
+каждый;E;2;0;0
+каждому;E;2;0;0
