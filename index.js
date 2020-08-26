@@ -1,6 +1,6 @@
 const { parseDate, extractWords } = require('./lib/date-parser');
 
-const original = "что-то каждый день";
+const original = "что-то каждые 5 секунд 10 минут 23 часов с 5 часов до 7 часов, 123 в 25 году";
 
 let obj = extractWords(original);
 let str = '';
