@@ -60,3 +60,5 @@ text;regex char;errors limit;value;maximum
 завтра;A;1;1;0
 послезавтра;A;2;2;0
 через;C;0;0;0
+с;V;0;0;0
+до;Z;0;0;0
