@@ -2,5 +2,5 @@ META;
 is_regex;
 1;
 regular expression;regex char
-\.;I
-,;I
+\.;!
+,;!
