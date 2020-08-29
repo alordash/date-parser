@@ -1,123 +1,424 @@
-const { parseDate } = require('../lib/date-parser');
+const { parseDate, TimeSet } = require('../lib/date-parser');
 
+const now = new Date();
+const date = now.getDate();
+const hours = now.getHours();
+const minutes = now.getMinutes();
+const month = now.getMonth();
+const seconds = now.getSeconds();
+const year = now.getFullYear();
+const day = now.getDay();
+console.log('day :>> ', day);
 const stringTests = [
-	{
-		in: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
-		outs: [
-			'31 декабря напомни позвонить послезавтра в центр',
-			'завтра в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
-			'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить в центр'
-		]
-	},
-	{
-		in: '6 апреля в 15:59, 9 марта за водой в 40 секунд и за хлебом, 20 минут 6 часов 50 июля 45 года и 2010 года но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей. Это новый контекст в 15:00, а то другой, и рядом с ним еще один на 10:00 января.',
-		outs: [
-			'',
-			'за водой и за хлебом',
-			'50 июля',
-			'но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей',
-			'Это новый контекст а то другой',
-			'рядом с ним еще один на января'
-		]
-	},
-	{
-		in: 'а 20.12.2020 и 5.05 что-то. то что в 10:20',
-		outs: [
-			'а',
-			'что-то',
-			'то что'
-		]
-	},
-	{
-		in: 'Сходить на улицу в воскресенье без 59 20 утра',
-		outs: [
-			'Сходить на улицу'
-		]
-	},
-	{
-		in: 'Полить цветы в 10 часов 40 минут 30 секунд утра 13 ноября 2022 года',
-		outs: [
-			'Полить цветы'
-		]
-	},
-	{
-		in: 'Полить цветы вечером в 10 часов 40 минут 30 секунд 13 ноября 2022 года',
-		outs: [
-			'Полить цветы'
-		]
-	},
-	{
-		in: '6 апреля в 15.00 Посылка',
-		outs: [
-			'Посылка'
-		]
-	},
-	{
-		in: '17 декабря в 15.30 к врачу',
-		outs: [
-			'к врачу'
-		]
-	},
-	{
-		in: 'купить в без 20 10 вечера 13 декабря 2030 года',
-		outs: [
-			'купить'
-		]
-	},
-	{
-		in: 'test',
-		outs: []
-	},
-	{
-		in: 'запустить пк послезавтра 30 августа в 5:06 в 2037 году',
-		outs: [
-			'запустить пк 30 августа',
-			'запустить пк послезавтра в 5:06 в 2037 году'
-		]
-	},
-	{
-		in: 'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд 13 ноября 2022 года',
-		outs: [
-			'Полить цветы 13 ноября 2022 года',
-			'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд'
-		]
-	},
-	{
-		in: 'Через 10 минут купить цветы, С 10 часов 40 минут 30 секунд вечера 13 ноября 2021 года до 15 января 2023 года Полить цветы ',
-		outs: [
-			'купить цветы',
-			'Полить цветы'
-		]
-	},
-	{
-		in: 'что-то каждый понедельник',
-		outs: [
-			'что-то'
-		]
-	},
-	{
-		in: 'что-то каждый день',
-		outs: [
-			'что-то'
-		]
-	},
-	{
-		in: 'что-то каждые 5 секунд 10 минут 23 часов с 5 часов до 7 часов, 123 в 25 году',
-		outs: [
-			'что-то',
-			'123'
-		]
-	}
+   {
+      in: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: '31 декабря напомни позвонить послезавтра в центр',
+            target_date: {
+               dates: date + 1,
+               hours: 20,
+               minutes: 59,
+               months: month + 1
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'завтра в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
+            target_date: {
+               dates: 31,
+               months: 12
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить в центр',
+            target_date: {
+               dates: date + 2,
+               months: month + 1
+            }
+         }
+      ]
+   },
+   {
+      in: '6 апреля в 15:59, 9 марта за водой в 40 секунд и за хлебом, 20 минут 6 часов 50 июля 45 года и 2010 года но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей. Это новый контекст в 15:00, а то другой, и рядом с ним еще один на 10:00 января.',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: '',
+            target_date: {
+               dates: 6,
+               hours: 15,
+               minutes: 59,
+               months: 4
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'за водой и за хлебом',
+            target_date: {
+               dates: 9,
+               months: 3,
+               seconds: 40
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: '50 июля',
+            target_date: {
+               hours: 6,
+               minutes: 20,
+               years: 45
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей',
+            target_date: {
+               years: 2010
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Это новый контекст а то другой',
+            target_date: {
+               hours: 15,
+               minutes: 0
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'рядом с ним еще один на января',
+            target_date: {
+               hours: 10,
+               minutes: 0
+            }
+         }
+      ]
+   },
+   {
+      in: 'а 20.12.2020 и 5.05 что-то. то что в 10:20',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'а',
+            target_date: {
+               dates: 20,
+               months: 12,
+               years: 2020
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'что-то',
+            target_date: {
+               dates: 5,
+               months: 5
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'то что',
+            target_date: {
+               hours: 10,
+               minutes: 20
+            }
+         }
+      ]
+   },
+   {
+      in: 'Сходить на улицу в среду без 59 20 утра',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Сходить на улицу',
+            target_date: {
+               dates: date + (day > 3 ? 7 + 3 - day : 3 - day),
+               hours: 7,
+               minutes: 1
+            }
+         }
+      ]
+   },
+   {
+      in: 'Полить цветы в 10 часов 40 минут 30 секунд утра 13 ноября 2022 года',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Полить цветы',
+            target_date: {
+               dates: 13,
+               hours: 10,
+               minutes: 40,
+               months: 11,
+               seconds: 30,
+               years: 2022
+            }
+         }
+      ]
+   },
+   {
+      in: 'Полить цветы вечером в 10 часов 40 минут 30 секунд 13 ноября 2022 года',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Полить цветы',
+            target_date: {
+               dates: 13,
+               hours: 22,
+               minutes: 40,
+               months: 11,
+               seconds: 30,
+               years: 2022
+            }
+         }
+      ]
+   },
+   {
+      in: '6 апреля в 15.00 Посылка',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Посылка',
+            target_date: {
+               dates: 6,
+               hours: 15,
+               minutes: 0,
+               months: 4,
+            }
+         }
+      ]
+   },
+   {
+      in: '17 декабря в 15.30 к врачу',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'к врачу',
+            target_date: {
+               dates: 17,
+               hours: 15,
+               minutes: 30,
+               months: 12,
+            }
+         }
+      ]
+   },
+   {
+      in: 'купить в без 20 10 вечера 13 декабря 2030 года',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'купить',
+            target_date: {
+               dates: 13,
+               hours: 21,
+               minutes: 40,
+               months: 12,
+               years: 2030
+            }
+         }
+      ]
+   },
+   {
+      in: 'test',
+      outs: []
+   },
+   {
+      in: 'запустить пк послезавтра 30 августа в 5:06 в 2037 году',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'запустить пк 30 августа',
+            target_date: {
+               dates: date + 2,
+               hours: 5,
+               minutes: 6,
+               months: month + 1,
+               years: 2037
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'запустить пк послезавтра в 5:06 в 2037 году',
+            target_date: {
+               dates: 30,
+               months: 8
+            }
+         }
+      ]
+   },
+   {
+      in: 'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд 13 ноября 2022 года',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Полить цветы 13 ноября 2022 года',
+            target_date: {
+               dates: date,
+               hours: hours + 10,
+               minutes: minutes + 40,
+               months: month + 3,
+               seconds: seconds + 30,
+               years: year + 34
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд',
+            target_date: {
+               dates: 13,
+               months: 11,
+               years: 2022
+            }
+         }
+      ]
+   },
+   {
+      in: 'Через 10 минут купить цветы, С 10 часов 40 минут 30 секунд вечера 13 ноября 2021 года до 15 января 2023 года Поливать цветы ',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'купить цветы',
+            target_date: {
+               dates: date,
+               hours: hours,
+               minutes: minutes + 10,
+               months: month + 1,
+               seconds: seconds,
+               years: year
+            }
+         },
+         {
+            max_date: {
+               dates: 15,
+               months: 1,
+               years: 2023
+            },
+            period_time: {},
+            string: 'Поливать цветы',
+            target_date: {
+               dates: 13,
+               hours: 22,
+               minutes: 40,
+               months: 11,
+               seconds: 30,
+               years: 2021
+            }
+         }
+      ]
+   },
+   {
+      in: 'что-то каждый понедельник',
+      outs: [
+         {
+            max_date: {},
+            period_time: {
+               dates: 7
+            },
+            string: 'что-то',
+            target_date: {
+               dates: date + (day > 1 ? 7 + 1 - day : 1 - day),
+            }
+         }
+      ]
+   },
+   {
+      in: 'не что-то каждый день',
+      outs: [
+         {
+            max_date: {},
+            period_time: {
+               dates: 1
+            },
+            string: 'не что-то',
+            target_date: {
+               dates: date + 1,
+            }
+         }
+      ]
+   },
+   {
+      in: 'то, что каждые 5 секунд 10 минут 23 часов с 5 часов до 7 часов, 123 в 25 году',
+      outs: [
+         {
+            max_date: {
+               hours: 7
+            },
+            period_time: {
+               hours: 23,
+               minutes: 10,
+               seconds: 5
+            },
+            string: 'то, что',
+            target_date: {
+               hours: 5
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: '123',
+            target_date: {
+               years: 25
+            }
+         }
+      ]
+   }
 ];
 
-describe('main strings test', function () {
-	for (const test of stringTests) {
-		const result = parseDate(test.in, 1, 50);
-		for (const i in result) {
-			it(test.in, function () {
-				expect(result[i].string).toBe(test.outs[+i]);
-
-			});
-		}
-	}
+describe('[Main strings test]', function () {
+   for (const test of stringTests) {
+      const results = parseDate(test.in, 1, 50);
+      let i = results.length;
+      it(test.in, function () {
+         while (i--) {
+            const result = results[i];
+            const out = test.outs[i];
+            for (const key in out) {
+               if (out.hasOwnProperty(key)) {
+                  const res_property = result[key];
+                  const out_property = out[key];
+                  if (key == 'string') {
+                     expect(res_property).toBe(out_property);
+                  } else {
+                     for (const time_property in res_property) {
+                        if (res_property.hasOwnProperty(time_property)) {
+                           if (typeof (out_property[time_property]) == 'undefined') {
+                              expect(res_property[time_property]).toBe(undefined);
+                           } else {
+                              expect(res_property[time_property].number).toBe(out_property[time_property]);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      });
+   }
 });
