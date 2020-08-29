@@ -391,7 +391,7 @@ const stringTests = [
    }
 ];
 
-describe('[Main strings test]', function () {
+describe('[RU]', function () {
    for (const test of stringTests) {
       const results = parseDate(test.in, 1, 50);
       let i = results.length;
