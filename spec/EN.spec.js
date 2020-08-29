@@ -22,6 +22,22 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'go to the cinema on next thursday at 12:30 34 seconds',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'go to the cinema',
+            target_date: {
+               dates: date + (day > 4 ? 7 + 4 - day : 4 - day),
+               hours: 12,
+               minutes: 30,
+               seconds: 34
+            }
+         }
+      ]
    }
 ];
 
