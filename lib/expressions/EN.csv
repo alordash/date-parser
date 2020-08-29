@@ -41,3 +41,5 @@ from;V;0;0;0
 every;E;0;0;0
 day;d;0;0;0
 o'clock;h;0;0;24
+p.m.;O;0;6;0
+a.m.;O;0;5;0
