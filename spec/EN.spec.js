@@ -77,10 +77,28 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'come home in 30 hours 10 seconds 20 minutes',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'come home',
+            target_date: {
+               dates: date,
+               hours: hours + 30,
+               minutes: minutes + 20,
+               months: month + 1,
+               seconds: seconds + 10,
+               years: year
+            }
+         }
+      ]
    }
 ];
 
-describe('[RU]', function () {
+describe('[EN]', function () {
    for (const test of stringTests) {
       const results = parseDate(test.in, 1, 50);
       let i = results.length;
