@@ -1,4 +1,4 @@
-const { parseDate, TimeSet } = require('../lib/date-parser');
+const { parseDate } = require('../lib/date-parser');
 
 const now = new Date();
 const date = now.getDate();
