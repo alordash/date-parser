@@ -38,6 +38,20 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'open window on submarine at 5 minutes to 7 pm',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'open window on submarine',
+            target_date: {
+               hours: 18,
+               minutes: 55,
+            }
+         }
+      ]
    }
 ];
 
