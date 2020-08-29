@@ -98,7 +98,7 @@ const stringTests = [
          {
             max_date: {},
             period_time: {},
-            string: 'рядом с ним еще один на января',
+            string: 'рядом с ним еще один января',
             target_date: {
                hours: 10,
                minutes: 0
