@@ -8,6 +8,7 @@ const month = now.getMonth();
 const seconds = now.getSeconds();
 const year = now.getFullYear();
 const day = now.getDay();
+const nextSaturday = (day > 6 ? 7 + 6 - day : 6 - day);
 console.log('day :>> ', day);
 const stringTests = [
    {
@@ -49,6 +50,30 @@ const stringTests = [
             target_date: {
                hours: 18,
                minutes: 55,
+            }
+         }
+      ]
+   },
+   {
+      in: 'visit doctor from 9 a.m. to 11 p.m. on next Saturday and go to shop at 7 p.m.',
+      outs: [
+         {
+            max_date: {
+               dates: date + (nextSaturday == 0 ? 7 : nextSaturday),
+               hours: 23
+            },
+            period_time: {},
+            string: 'visit doctor',
+            target_date: {
+               hours: 9
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'go to shop',
+            target_date: {
+               hours: 19
             }
          }
       ]
