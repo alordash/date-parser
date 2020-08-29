@@ -79,7 +79,7 @@ const stringTests = [
       ]
    },
    {
-      in: 'come home in 30 hours 10 seconds 20 minutes',
+      in: 'come home in 10 seconds 20 minutes 30 hours. Buy milk and wash car on monday Wash my car ',
       outs: [
          {
             max_date: {},
@@ -93,7 +93,15 @@ const stringTests = [
                seconds: seconds + 10,
                years: year
             }
-         }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Buy milk and wash car Wash my car',
+            target_date: {
+               dates: date + (day > 1 ? 7 + 1 - day : 1 - day),
+            }
+         },
       ]
    }
 ];
