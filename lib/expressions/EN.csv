@@ -5,6 +5,8 @@ text;regex char;errors limit;value;maximum
 second;s;1;0;60
 minute;m;1;0;60
 hour;h;0;0;24
+hours;h;0;0;24
+o'clock;h;0;0;24
 week;w;0;0;7
 month;K;0;0;0
 year;y;0;0;0
@@ -20,6 +22,7 @@ september;M;2;9;30
 october;M;2;10;31
 november;M;2;11;30
 december;M;2;12;31
+day;d;0;0;0
 monday;d;1;2;0
 tuesday;d;2;3;0
 wednesday;d;2;4;0
@@ -33,16 +36,13 @@ and;I;0;0;0
 next;F;0;0;0
 am;O;0;5;0
 pm;O;0;6;0
+p.m.;O;0;6;0
+a.m.;O;0;5;0
 half;H;0;0;0
 to;B;0;0;0
 tomorrow;A;1;1;0
 in;C;0;0;0
+after;C;0;0;0
 from;V;0;0;0
 every;E;0;0;0
-day;d;0;0;0
-o'clock;h;0;0;24
-p.m.;O;0;6;0
-a.m.;O;0;5;0
-hours;h;0;0;24
-after;C;0;0;0
 past;L;0;0;0
