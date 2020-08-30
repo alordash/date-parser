@@ -8,4 +8,4 @@ obj.forEach(v => str += v.regex_char);
 console.log(str);
 let resDate = parseDate(original, 1, 50);
 console.log('resDate :>> ', resDate);
-rconsole.log("exiting . . .");
+console.log("exiting . . .");
