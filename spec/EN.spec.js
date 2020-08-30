@@ -103,6 +103,19 @@ const stringTests = [
             }
          },
       ]
+   },
+   {
+      in: 'come home at half past 12',
+      outs: [{
+         max_date: {},
+         period_time: {},
+         string: 'come home',
+         target_date: {
+            hours: 12,
+            minutes: 30
+         }
+      }
+      ]
    }
 ];
 
