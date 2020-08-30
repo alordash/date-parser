@@ -46,18 +46,13 @@ Every ParsedDate object represents particular date and event retrieved from sour
 * ParsedDate.max_date       {**TimeList**}       — contains all information about maximum date of event.  
 * ParsedDate.string         {**String**}         — event description without date-related words.  
 
-### Function parseDate()
+### Function parseDate(): {Array.\<ParsedDates\>}
 
 #### Arguments
 
 1. string {**String**} — source string.  
 2. errorLimit {**Number**} — From 0.0 to 1.0, the less — the less results. Used for recognizing words with mistakes.  
 3. minimumPrevalence {**Number**} — From 0 to 100, the less — the more results. Used to filter rare date cases.  
-
-#### Return value
-
-Returns array of **ParsedDates**.  
-{**Array.\<ParsedDates\>**}
 
 # Usage
 
@@ -114,3 +109,22 @@ console.log('maximum date :>> ', JSON.stringify(result[0].maximum_date));
 console.log('event :>> ', JSON.stringify(result[0].string));
 //=> event :>> Get up from the computer and do a warm-up
 ```
+
+# Features
+
+### ParsedDate.toString(): {String}
+
+Returns event description.
+
+### ParsedDate.valueOf(): {{target_date: Date, period_time: Date, max_date: Date}}
+
+Composes all found time types to dates and returns {
+
+    target_date: Date,  
+    period_time: Date,  
+    max_date: Date  
+
+} object.  
+  
+Using current time values (**new Date()**) for not found target_dates' and max_dates' time types.  
+Using null time values (**new Date(0)**) for not found period_time time types.  

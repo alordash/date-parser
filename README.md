@@ -46,18 +46,13 @@ $ npm i @alordash/date-parser
 * ParsedDate.max_date       {**TimeList**}       — содержит всю информацию о максимальной дате события.  
 * ParsedDate.string         {**String**}         — описание события без слов, использованных для определения даты.  
 
-### Функция parseDate()
+### Функция parseDate(): {Array.\<ParsedDates\>}
 
 #### Аргументы
 
 1. string {**String**} — исходная строка.  
 2. errorLimit {**Number**} — От 0.0 до 1.0, чем меньше — тем меньше результатов. Используется для распознавания слов с ошибками.  
 3. minimumPrevalence {**Number**} — От 0 до 100, чем меньше — тем больше результатов. Используется для фильтрации редких типов определения времени.  
-
-#### Возвращаемое значение
-
-Возвращает массив **ParsedDates**.  
-{**Array.\<ParsedDates\>**}
 
 # Использование
 
@@ -114,3 +109,23 @@ console.log('максимальная дата :>> ', JSON.stringify(result[0].m
 console.log('событие :>> ', JSON.stringify(result[0].string));
 //=> событие :>> 'вставать из-за компьютера и делать разминку'
 ```
+
+# Особенности
+
+### ParsedDate.toString(): {String}
+
+Возвращает
+
+### ParsedDate.valueOf(): {{target_date: Date, period_time: Date, max_date: Date}}
+
+Собирает все найденные типы времен в дату и возвращает объект типа  
+{
+
+    target_date: Date,  
+    period_time: Date,  
+    max_date: Date  
+
+}  
+  
+Для не найденных типов времени у target_dates и max_dates используются текущие значения (**new Date()**).  
+Для не найденных типов времени у period_times используются нулевые значения (**new Date(0)**).  
