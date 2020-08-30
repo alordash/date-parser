@@ -101,7 +101,7 @@ console.log('target date :>> ', JSON.stringify(result[0].target_date));
 //=> target date :>>  {"dates":19,"hours":9,"minutes":0,"months":9}
 
 console.log('period time :>> ', JSON.stringify(result[0].period_time));
-//=> period time :>>  {"hours":9,"minutes":0}
+//=> period time :>>  {"minutes":15}
 
 console.log('maximum date :>> ', JSON.stringify(result[0].maximum_date));
 //=> maximum date :>>  {"hours":20,"minutes":0}

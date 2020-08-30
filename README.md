@@ -101,7 +101,7 @@ console.log('целевая дата :>> ', JSON.stringify(result[0].target_date
 //=> целевая дата :>>  {"dates":19,"hours":9,"minutes":0,"months":9}
 
 console.log('период :>> ', JSON.stringify(result[0].period_time));
-//=> период :>>  {"hours":9,"minutes":0}
+//=> период :>>  {"minutes":15}
 
 console.log('максимальная дата :>> ', JSON.stringify(result[0].maximum_date));
 //=> максимальная дата :>>  {"hours":20,"minutes":0}
