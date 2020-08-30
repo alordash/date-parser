@@ -1,5 +1,5 @@
 {
-  "name": "@alordash/parse-word-to-number",
+  "name": "@alordash/date-parser",
   "version": "0.0.1",
   "description": "Extracts date from human message.",
   "main": "index.js",
