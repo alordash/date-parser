@@ -405,7 +405,7 @@ describe('[RU]', function () {
                            if (typeof (out_property[time_property]) == 'undefined') {
                               expect(res_property[time_property]).toBe(undefined);
                            } else {
-                              expect(res_property[time_property].number).toBe(out_property[time_property]);
+                              expect(res_property[time_property]).toBe(out_property[time_property]);
                            }
                         }
                      }
