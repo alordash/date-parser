@@ -64,3 +64,5 @@ text;regex char;errors limit;value;maximum
 день;d;0;0;0
 дней;d;0;0;0
 во;p;0;0;0
+после;L;0;0;0
+половина;H;1;0;0
