@@ -1,12 +1,6 @@
 const { parseDate } = require('../lib/date-parser');
 
 const now = new Date();
-const date = now.getDate();
-const hours = now.getHours();
-const minutes = now.getMinutes();
-const month = now.getMonth();
-const seconds = now.getSeconds();
-const year = now.getFullYear();
 const day = now.getDay();
 console.log('day :>> ', day);
 const stringTests = [
@@ -18,10 +12,10 @@ const stringTests = [
             period_time: {},
             string: '31 декабря напомни позвонить послезавтра в центр',
             target_date: {
-               dates: date + 1,
+               dates: now.getDate() + 1,
                hours: 20,
                minutes: 59,
-               months: month + 1
+               months: now.getMonth() + 1
             }
          },
          {
@@ -38,8 +32,8 @@ const stringTests = [
             period_time: {},
             string: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить в центр',
             target_date: {
-               dates: date + 2,
-               months: month + 1
+               dates: now.getDate() + 2,
+               months: now.getMonth() + 1
             }
          }
       ]
@@ -147,7 +141,7 @@ const stringTests = [
             period_time: {},
             string: 'Сходить на улицу',
             target_date: {
-               dates: date + (day > 3 ? 7 + 3 - day : 3 - day),
+               dates: now.getDate() + (day > 3 ? 7 + 3 - day : 3 - day),
                hours: 7,
                minutes: 1
             }
@@ -251,10 +245,10 @@ const stringTests = [
             period_time: {},
             string: 'запустить пк 30 августа',
             target_date: {
-               dates: date + 2,
+               dates: now.getDate() + 2,
                hours: 5,
                minutes: 6,
-               months: month + 1,
+               months: now.getMonth() + 1,
                years: 2037
             }
          },
@@ -277,12 +271,12 @@ const stringTests = [
             period_time: {},
             string: 'Полить цветы 13 ноября 2022 года',
             target_date: {
-               dates: date,
-               hours: hours + 10,
-               minutes: minutes + 40,
-               months: month + 3,
-               seconds: seconds + 30,
-               years: year + 34
+               dates: now.getDate(),
+               hours: now.getHours() + 10,
+               minutes: now.getMinutes() + 40,
+               months: now.getMonth() + 3,
+               seconds: now.getSeconds() + 30,
+               years: now.getFullYear() + 34
             }
          },
          {
@@ -305,12 +299,12 @@ const stringTests = [
             period_time: {},
             string: 'купить цветы',
             target_date: {
-               dates: date,
-               hours: hours,
-               minutes: minutes + 10,
-               months: month + 1,
-               seconds: seconds,
-               years: year
+               dates: now.getDate(),
+               hours: now.getHours(),
+               minutes: now.getMinutes() + 10,
+               months: now.getMonth() + 1,
+               seconds: now.getSeconds(),
+               years: now.getFullYear()
             }
          },
          {
@@ -342,7 +336,7 @@ const stringTests = [
             },
             string: 'что-то',
             target_date: {
-               dates: date + (day > 1 ? 7 + 1 - day : 1 - day),
+               dates: now.getDate() + (day > 1 ? 7 + 1 - day : 1 - day),
             }
          }
       ]
@@ -357,7 +351,7 @@ const stringTests = [
             },
             string: 'не что-то',
             target_date: {
-               dates: date + 1,
+               dates: now.getDate() + 1,
             }
          }
       ]

@@ -1,12 +1,6 @@
 const { parseDate } = require('../lib/date-parser');
 
 const now = new Date();
-const date = now.getDate();
-const hours = now.getHours();
-const minutes = now.getMinutes();
-const month = now.getMonth();
-const seconds = now.getSeconds();
-const year = now.getFullYear();
 const day = now.getDay();
 const nextSaturday = (day > 6 ? 7 + 6 - day : 6 - day);
 console.log('day :>> ', day);
@@ -32,7 +26,7 @@ const stringTests = [
             period_time: {},
             string: 'go to the cinema',
             target_date: {
-               dates: date + (day > 4 ? 7 + 4 - day : 4 - day),
+               dates: now.getDate() + (day > 4 ? 7 + 4 - day : 4 - day),
                hours: 12,
                minutes: 30,
                seconds: 34
@@ -59,7 +53,7 @@ const stringTests = [
       outs: [
          {
             max_date: {
-               dates: date + (nextSaturday == 0 ? 7 : nextSaturday),
+               dates: now.getDate() + (nextSaturday == 0 ? 7 : nextSaturday),
                hours: 23
             },
             period_time: {},
@@ -86,12 +80,12 @@ const stringTests = [
             period_time: {},
             string: 'come home',
             target_date: {
-               dates: date,
-               hours: hours + 30,
-               minutes: minutes + 20,
-               months: month + 1,
-               seconds: seconds + 10,
-               years: year
+               dates: now.getDate(),
+               hours: now.getHours() + 30,
+               minutes: now.getMinutes() + 20,
+               months: now.getMonth() + 1,
+               seconds: now.getSeconds() + 10,
+               years: now.getFullYear()
             }
          },
          {
@@ -99,7 +93,7 @@ const stringTests = [
             period_time: {},
             string: 'Buy milk and wash car Wash my car',
             target_date: {
-               dates: date + (day > 1 ? 7 + 1 - day : 1 - day),
+               dates: now.getDate() + (day > 1 ? 7 + 1 - day : 1 - day),
             }
          },
       ]
