@@ -89,7 +89,7 @@ const stringTests = [
          {
             max_date: {},
             period_time: {},
-            string: 'Это новый контекст, а то другой,',
+            string: 'Это новый контекст а то другой',
             target_date: {
                hours: 15,
                minutes: 0
