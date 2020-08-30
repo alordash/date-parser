@@ -131,15 +131,21 @@ const stringTests = [
       ]
    },
    {
-      in: 'Get up from the computer every 15 minutes and do a warm-up',
+      in: 'From 9:00 to 20:00 Get up from the computer every 15 minutes and do a warm-up',
       outs: [
          {
-            max_date: {},
+            max_date: {
+               hours: 20,
+               minutes: 0
+            },
             period_time: {
                minutes: 15
             },
             string: 'Get up from the computer and do a warm-up',
-            target_date: {}
+            target_date: {
+               hours: 9,
+               minutes: 0
+            }
          }
       ]
    }
