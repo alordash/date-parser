@@ -4,6 +4,10 @@
 $ npm i @alordash/date-parser
 ```  
 
+## Links
+
+* [English version](README-EN.md)  
+
 # Описание
 
 Извлекает даты о разных событиях из человеческого сообщения с точностью до секунды.  

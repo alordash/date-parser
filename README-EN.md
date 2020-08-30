@@ -4,6 +4,10 @@
 $ npm i @alordash/date-parser
 ```  
 
+## Links
+
+* [Описание на русском языке](README.md)  
+
 # Description
 
 Extracts dates of any event from human spoken message with **seconds** precision.  
