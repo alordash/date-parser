@@ -129,6 +129,19 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'Get up from the computer every 15 minutes and do a warm-up',
+      outs: [
+         {
+            max_date: {},
+            period_time: {
+               minutes: 15
+            },
+            string: 'Get up from the computer and do a warm-up',
+            target_date: {}
+         }
+      ]
    }
 ];
 
