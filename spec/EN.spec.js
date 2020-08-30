@@ -100,15 +100,34 @@ const stringTests = [
    },
    {
       in: 'come home at half past 12',
-      outs: [{
-         max_date: {},
-         period_time: {},
-         string: 'come home',
-         target_date: {
-            hours: 12,
-            minutes: 30
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'come home',
+            target_date: {
+               hours: 12,
+               minutes: 30
+            }
          }
-      }
+      ]
+   },
+   {
+      in: 'Turn off the gas in 1 hour 20 minutes',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Turn off the gas',
+            target_date: {
+               dates: now.getDate(),
+               hours: now.getHours() + 1,
+               minutes: now.getMinutes() + 20,
+               months: now.getMonth() + 1,
+               seconds: now.getSeconds(),
+               years: now.getFullYear()
+            }
+         }
       ]
    }
 ];
