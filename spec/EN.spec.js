@@ -155,7 +155,7 @@ const stringTests = [
 
 describe('[EN]', function () {
    for (const test of stringTests) {
-      const results = parseDate(test.in, 1, 50);
+      const results = parseDate(test.in);
       let i = results.length;
       it(test.in, function () {
          while (i--) {
