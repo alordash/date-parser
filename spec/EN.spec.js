@@ -131,7 +131,7 @@ const stringTests = [
       ]
    },
    {
-      in: 'From 9:00 to 20:00 Get up from the computer every 15 minutes and do a warm-up',
+      in: 'On 19 of September From 9:00 to 20:00 Get up from the computer every 15 minutes and do a warm-up',
       outs: [
          {
             max_date: {
@@ -143,8 +143,10 @@ const stringTests = [
             },
             string: 'Get up from the computer and do a warm-up',
             target_date: {
+               dates: 19,
                hours: 9,
-               minutes: 0
+               minutes: 0,
+               months: 9
             }
          }
       ]
