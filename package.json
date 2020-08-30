@@ -1,5 +1,5 @@
 {
-  "name": "date-parser",
+  "name": "@alordash/parse-word-to-number",
   "version": "0.0.1",
   "description": "Extracts date from human message.",
   "main": "index.js",
@@ -18,7 +18,8 @@
   "homepage": "https://github.com/alordash/date-parser#readme",
   "keywords": [
     "date",
-    "parse"
+    "parse",
+    "parsing"
   ],
   "dependencies": {
     "@alordash/damerau-levenshtein": "^1.0.7"
