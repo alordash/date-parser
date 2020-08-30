@@ -114,7 +114,7 @@ console.log('событие :>> ', JSON.stringify(result[0].string));
 
 ### ParsedDate.toString(): {String}
 
-Возвращает
+Возвращает описание события.  
 
 ### ParsedDate.valueOf(): {{target_date: Date, period_time: Date, max_date: Date}}
 
