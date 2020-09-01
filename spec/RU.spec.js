@@ -277,7 +277,8 @@ const stringTests = [
                months: now.getMonth() + 3,
                seconds: now.getSeconds() + 30,
                years: now.getFullYear() + 34
-            }
+            },
+            isOffset: true
          },
          {
             max_date: {},
@@ -287,7 +288,8 @@ const stringTests = [
                dates: 13,
                months: 11,
                years: 2022
-            }
+            },
+            isOffset: false
          }
       ]
    },
@@ -305,7 +307,8 @@ const stringTests = [
                months: now.getMonth() + 1,
                seconds: now.getSeconds(),
                years: now.getFullYear()
-            }
+            },
+            isOffset: true
          },
          {
             max_date: {
@@ -322,7 +325,8 @@ const stringTests = [
                months: 11,
                seconds: 30,
                years: 2021
-            }
+            },
+            isOffset: false
          }
       ]
    },
@@ -397,7 +401,7 @@ describe('[RU]', function () {
                if (out.hasOwnProperty(key)) {
                   const res_property = result[key];
                   const out_property = out[key];
-                  if (key == 'string') {
+                  if (key == 'string' || key == 'isOffset') {
                      expect(res_property).toBe(out_property);
                   } else {
                      for (const time_property in res_property) {

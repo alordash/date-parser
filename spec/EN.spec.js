@@ -86,7 +86,8 @@ const stringTests = [
                months: now.getMonth() + 1,
                seconds: now.getSeconds() + 10,
                years: now.getFullYear()
-            }
+            },
+            isOffset: true
          },
          {
             max_date: {},
@@ -94,7 +95,8 @@ const stringTests = [
             string: 'Buy milk and wash car Wash my car',
             target_date: {
                dates: now.getDate() + (day > 1 ? 7 + 1 - day : 1 - day),
-            }
+            },
+            isOffset: false
          },
       ]
    },
