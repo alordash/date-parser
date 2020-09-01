@@ -85,9 +85,9 @@ const stringTests = [
                minutes: now.getMinutes() + 20,
                months: now.getMonth() + 1,
                seconds: now.getSeconds() + 10,
-               years: now.getFullYear()
-            },
-            isOffset: true
+               years: now.getFullYear(),
+               isOffset: true
+            }
          },
          {
             max_date: {},
@@ -95,8 +95,8 @@ const stringTests = [
             string: 'Buy milk and wash car Wash my car',
             target_date: {
                dates: now.getDate() + (day > 1 ? 7 + 1 - day : 1 - day),
-            },
-            isOffset: false
+               isOffset: false
+            }
          },
       ]
    },
@@ -173,7 +173,9 @@ describe('[EN]', function () {
                      for (const time_property in res_property) {
                         if (res_property.hasOwnProperty(time_property)) {
                            if (typeof (out_property[time_property]) == 'undefined') {
-                              expect(res_property[time_property]).toBe(undefined);
+                              if (time_property != 'isOffset') {
+                                 expect(res_property[time_property]).toBe(undefined);
+                              }
                            } else {
                               expect(res_property[time_property]).toBe(out_property[time_property]);
                            }

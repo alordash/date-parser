@@ -276,9 +276,9 @@ const stringTests = [
                minutes: now.getMinutes() + 40,
                months: now.getMonth() + 3,
                seconds: now.getSeconds() + 30,
-               years: now.getFullYear() + 34
-            },
-            isOffset: true
+               years: now.getFullYear() + 34,
+               isOffset: true
+            }
          },
          {
             max_date: {},
@@ -287,9 +287,9 @@ const stringTests = [
             target_date: {
                dates: 13,
                months: 11,
-               years: 2022
-            },
-            isOffset: false
+               years: 2022,
+               isOffset: false
+            }
          }
       ]
    },
@@ -306,9 +306,9 @@ const stringTests = [
                minutes: now.getMinutes() + 10,
                months: now.getMonth() + 1,
                seconds: now.getSeconds(),
-               years: now.getFullYear()
-            },
-            isOffset: true
+               years: now.getFullYear(),
+               isOffset: true
+            }
          },
          {
             max_date: {
@@ -324,9 +324,9 @@ const stringTests = [
                minutes: 40,
                months: 11,
                seconds: 30,
-               years: 2021
-            },
-            isOffset: false
+               years: 2021,
+               isOffset: false
+            }
          }
       ]
    },
@@ -407,7 +407,9 @@ describe('[RU]', function () {
                      for (const time_property in res_property) {
                         if (res_property.hasOwnProperty(time_property)) {
                            if (typeof (out_property[time_property]) == 'undefined') {
-                              expect(res_property[time_property]).toBe(undefined);
+                              if (time_property != 'isOffset') {
+                                 expect(res_property[time_property]).toBe(undefined);
+                              }
                            } else {
                               expect(res_property[time_property]).toBe(out_property[time_property]);
                            }
