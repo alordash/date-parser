@@ -15,7 +15,7 @@ const stringTests = [
                dates: now.getDate() + 1,
                hours: 20,
                minutes: 59,
-               months: now.getMonth() + 1
+               months: now.getMonth()
             }
          },
          {
@@ -24,7 +24,7 @@ const stringTests = [
             string: 'завтра в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
             target_date: {
                dates: 31,
-               months: 12
+               months: 11
             }
          },
          {
@@ -33,7 +33,7 @@ const stringTests = [
             string: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить в центр',
             target_date: {
                dates: now.getDate() + 2,
-               months: now.getMonth() + 1
+               months: now.getMonth()
             }
          }
       ]
@@ -49,7 +49,7 @@ const stringTests = [
                dates: 6,
                hours: 15,
                minutes: 59,
-               months: 4
+               months: 3
             }
          },
          {
@@ -58,7 +58,7 @@ const stringTests = [
             string: 'за водой и за хлебом',
             target_date: {
                dates: 9,
-               months: 3,
+               months: 2,
                seconds: 40
             }
          },
@@ -109,7 +109,7 @@ const stringTests = [
             string: 'а',
             target_date: {
                dates: 20,
-               months: 12,
+               months: 11,
                years: 2020
             }
          },
@@ -119,7 +119,7 @@ const stringTests = [
             string: 'что-то',
             target_date: {
                dates: 5,
-               months: 5
+               months: 4
             }
          },
          {
@@ -159,7 +159,7 @@ const stringTests = [
                dates: 13,
                hours: 10,
                minutes: 40,
-               months: 11,
+               months: 10,
                seconds: 30,
                years: 2022
             }
@@ -177,7 +177,7 @@ const stringTests = [
                dates: 13,
                hours: 22,
                minutes: 40,
-               months: 11,
+               months: 10,
                seconds: 30,
                years: 2022
             }
@@ -195,7 +195,7 @@ const stringTests = [
                dates: 6,
                hours: 15,
                minutes: 0,
-               months: 4,
+               months: 3,
             }
          }
       ]
@@ -211,7 +211,7 @@ const stringTests = [
                dates: 17,
                hours: 15,
                minutes: 30,
-               months: 12,
+               months: 11,
             }
          }
       ]
@@ -227,7 +227,7 @@ const stringTests = [
                dates: 13,
                hours: 21,
                minutes: 40,
-               months: 12,
+               months: 11,
                years: 2030
             }
          }
@@ -248,7 +248,7 @@ const stringTests = [
                dates: now.getDate() + 2,
                hours: 5,
                minutes: 6,
-               months: now.getMonth() + 1,
+               months: now.getMonth(),
                years: 2037
             }
          },
@@ -258,7 +258,7 @@ const stringTests = [
             string: 'запустить пк послезавтра в 5:06 в 2037 году',
             target_date: {
                dates: 30,
-               months: 8
+               months: 7
             }
          }
       ]
@@ -274,7 +274,7 @@ const stringTests = [
                dates: now.getDate(),
                hours: now.getHours() + 10,
                minutes: now.getMinutes() + 40,
-               months: now.getMonth() + 3,
+               months: now.getMonth() + 2,
                seconds: now.getSeconds() + 30,
                years: now.getFullYear() + 34,
                isOffset: true
@@ -286,7 +286,7 @@ const stringTests = [
             string: 'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд',
             target_date: {
                dates: 13,
-               months: 11,
+               months: 10,
                years: 2022,
                isOffset: false
             }
@@ -304,7 +304,7 @@ const stringTests = [
                dates: now.getDate(),
                hours: now.getHours(),
                minutes: now.getMinutes() + 10,
-               months: now.getMonth() + 1,
+               months: now.getMonth(),
                seconds: now.getSeconds(),
                years: now.getFullYear(),
                isOffset: true
@@ -313,7 +313,7 @@ const stringTests = [
          {
             max_date: {
                dates: 15,
-               months: 1,
+               months: 0,
                years: 2023
             },
             period_time: {},
@@ -322,7 +322,7 @@ const stringTests = [
                dates: 13,
                hours: 22,
                minutes: 40,
-               months: 11,
+               months: 10,
                seconds: 30,
                years: 2021,
                isOffset: false

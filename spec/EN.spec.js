@@ -83,7 +83,7 @@ const stringTests = [
                dates: now.getDate(),
                hours: now.getHours() + 30,
                minutes: now.getMinutes() + 20,
-               months: now.getMonth() + 1,
+               months: now.getMonth(),
                seconds: now.getSeconds() + 10,
                years: now.getFullYear(),
                isOffset: true
@@ -125,7 +125,7 @@ const stringTests = [
                dates: now.getDate(),
                hours: now.getHours() + 1,
                minutes: now.getMinutes() + 20,
-               months: now.getMonth() + 1,
+               months: now.getMonth(),
                seconds: now.getSeconds(),
                years: now.getFullYear()
             }
@@ -148,7 +148,7 @@ const stringTests = [
                dates: 19,
                hours: 9,
                minutes: 0,
-               months: 9
+               months: 8
             }
          }
       ]
