@@ -141,7 +141,7 @@ const stringTests = [
             period_time: {},
             string: 'Сходить на улицу',
             target_date: {
-               dates: now.getDate() + (day > 3 ? 7 + 3 - day : 3 - day),
+               dates: now.getDate() + (day >= 3 ? 7 + 3 - day : 3 - day),
                hours: 7,
                minutes: 1
             }
@@ -340,7 +340,7 @@ const stringTests = [
             },
             string: 'что-то',
             target_date: {
-               dates: now.getDate() + (day > 1 ? 7 + 1 - day : 1 - day),
+               dates: now.getDate() + (day >= 1 ? 7 + 1 - day : 1 - day),
             }
          }
       ]
