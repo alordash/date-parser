@@ -1,7 +1,7 @@
 const { parseDate } = require('../lib/date-parser');
 
 const now = new Date();
-const day = now.getDay();
+const day = now.getUTCDay();
 const nextSaturday = (day >= 6 ? 7 + 6 - day : 6 - day);
 console.log('day :>> ', day);
 const stringTests = [
@@ -26,7 +26,7 @@ const stringTests = [
             period_time: {},
             string: 'go to the cinema',
             target_date: {
-               dates: now.getDate() + (day >= 4 ? 7 + 4 - day : 4 - day),
+               dates: now.getUTCDate() + (day >= 4 ? 7 + 4 - day : 4 - day),
                hours: 12,
                minutes: 30,
                seconds: 34
@@ -53,7 +53,7 @@ const stringTests = [
       outs: [
          {
             max_date: {
-               dates: now.getDate() + (nextSaturday == 0 ? 7 : nextSaturday),
+               dates: now.getUTCDate() + (nextSaturday == 0 ? 7 : nextSaturday),
                hours: 23
             },
             period_time: {},
@@ -80,12 +80,12 @@ const stringTests = [
             period_time: {},
             string: 'come home',
             target_date: {
-               dates: now.getDate(),
-               hours: now.getHours() + 30,
-               minutes: now.getMinutes() + 20,
-               months: now.getMonth(),
-               seconds: now.getSeconds() + 10,
-               years: now.getFullYear(),
+               dates: now.getUTCDate(),
+               hours: now.getUTCHours() + 30,
+               minutes: now.getUTCMinutes() + 20,
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds() + 10,
+               years: now.getUTCFullYear(),
                isOffset: true
             }
          },
@@ -94,7 +94,7 @@ const stringTests = [
             period_time: {},
             string: 'Buy milk and wash car Wash my car',
             target_date: {
-               dates: now.getDate() + (day >= 1 ? 7 + 1 - day : 1 - day),
+               dates: now.getUTCDate() + (day >= 1 ? 7 + 1 - day : 1 - day),
                isOffset: false
             }
          },
@@ -122,12 +122,12 @@ const stringTests = [
             period_time: {},
             string: 'Turn off the gas',
             target_date: {
-               dates: now.getDate(),
-               hours: now.getHours() + 1,
-               minutes: now.getMinutes() + 20,
-               months: now.getMonth(),
-               seconds: now.getSeconds(),
-               years: now.getFullYear()
+               dates: now.getUTCDate(),
+               hours: now.getUTCHours() + 1,
+               minutes: now.getUTCMinutes() + 20,
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds(),
+               years: now.getUTCFullYear()
             }
          }
       ]
