@@ -1,4 +1,5 @@
 const { parseDate } = require('../lib/date-parser');
+const { isTimeType, isDateType } = require('../lib/date-cases');
 
 const now = new Date();
 const day = now.getUTCDay();
@@ -15,7 +16,8 @@ const stringTests = [
                dates: now.getUTCDate() + 1,
                hours: 20,
                minutes: 59,
-               months: now.getUTCMonth()
+               months: now.getUTCMonth(),
+               isFixed: true
             }
          },
          {
@@ -143,7 +145,8 @@ const stringTests = [
             target_date: {
                dates: now.getUTCDate() + (day >= 3 ? 7 + 3 - day : 3 - day),
                hours: 7,
-               minutes: 1
+               minutes: 1,
+               isFixed: true
             }
          }
       ]
@@ -161,7 +164,8 @@ const stringTests = [
                minutes: 40,
                months: 10,
                seconds: 30,
-               years: 2022
+               years: 2022,
+               isFixed: true
             }
          }
       ]
@@ -228,7 +232,8 @@ const stringTests = [
                hours: 21,
                minutes: 40,
                months: 11,
-               years: 2030
+               years: 2030,
+               isFixed: true
             }
          }
       ]
@@ -325,7 +330,8 @@ const stringTests = [
                months: 10,
                seconds: 30,
                years: 2021,
-               isOffset: false
+               isOffset: false,
+               isFixed: true
             }
          }
       ]
@@ -401,13 +407,13 @@ describe('[RU]', function () {
                if (out.hasOwnProperty(key)) {
                   const res_property = result[key];
                   const out_property = out[key];
-                  if (key == 'string' || key == 'isOffset') {
+                  if (!isDateType(key)) {
                      expect(res_property).toBe(out_property);
                   } else {
                      for (const time_property in res_property) {
                         if (res_property.hasOwnProperty(time_property)) {
                            if (typeof (out_property[time_property]) == 'undefined') {
-                              if (time_property != 'isOffset') {
+                              if (isTimeType(time_property)) {
                                  expect(res_property[time_property]).toBe(undefined);
                               }
                            } else {

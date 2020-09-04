@@ -1,4 +1,5 @@
 const { parseDate } = require('../lib/date-parser');
+const { isTimeType, isDateType } = require('../lib/date-cases');
 
 const now = new Date();
 const day = now.getUTCDay();
@@ -13,7 +14,8 @@ const stringTests = [
             period_time: {},
             string: 'something',
             target_date: {
-               hours: 18
+               hours: 18,
+               isFixed: true
             }
          }
       ]
@@ -44,6 +46,7 @@ const stringTests = [
             target_date: {
                hours: 18,
                minutes: 55,
+               isFixed: true
             }
          }
       ]
@@ -54,12 +57,14 @@ const stringTests = [
          {
             max_date: {
                dates: now.getUTCDate() + (nextSaturday == 0 ? 7 : nextSaturday),
-               hours: 23
+               hours: 23,
+               isFixed: true
             },
             period_time: {},
             string: 'visit doctor',
             target_date: {
-               hours: 9
+               hours: 9,
+               isFixed: true
             }
          },
          {
@@ -67,7 +72,8 @@ const stringTests = [
             period_time: {},
             string: 'go to shop',
             target_date: {
-               hours: 19
+               hours: 19,
+               isFixed: true
             }
          }
       ]
@@ -167,13 +173,13 @@ describe('[EN]', function () {
                if (out.hasOwnProperty(key)) {
                   const res_property = result[key];
                   const out_property = out[key];
-                  if (key == 'string') {
+                  if (!isDateType(key)) {
                      expect(res_property).toBe(out_property);
                   } else {
                      for (const time_property in res_property) {
                         if (res_property.hasOwnProperty(time_property)) {
                            if (typeof (out_property[time_property]) == 'undefined') {
-                              if (time_property != 'isOffset') {
+                              if (isTimeType(time_property)) {
                                  expect(res_property[time_property]).toBe(undefined);
                               }
                            } else {
