@@ -14,6 +14,7 @@ Extracts dates of any event from human spoken message with **seconds** precision
 Can return event description without date-related words.  
 It uses my realization of **[Damerau-Levenshtein algorithm](https://github.com/alordash/damerau-levenshtein)** to properly parse words even if they are written with mistakes.  
 **Supports Russian and English languages.**  
+Easy to use, this library allows you to determine dates with absolute precision using a variety of parameters.  
 
 # Documentaion
 
@@ -45,6 +46,8 @@ Every ParsedDate object represents particular date and event retrieved from sour
 * ParsedDate.period_time    {**TimeList**}       — contains all information about periodicity of event.  
 * ParsedDate.max_date       {**TimeList**}       — contains all information about maximum date of event.  
 * ParsedDate.string         {**String**}         — event description without date-related words.  
+* ParsedDate.isOffset       {**Boolean**}        — is this date determined with offset (using word "*in*").  
+* ParsedDate.isFixed        {**Boolean**}        — does contain dates with unambiguous definition (e.g. "9 **a.m.**").  
 
 ### Function parseDate(): {Array.\<ParsedDates\>}
 
