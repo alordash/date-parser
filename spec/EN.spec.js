@@ -31,7 +31,8 @@ const stringTests = [
                dates: now.getUTCDate() + (day >= 4 ? 7 + 4 - day : 4 - day),
                hours: 12,
                minutes: 30,
-               seconds: 34
+               seconds: 34,
+               isFixed: true
             }
          }
       ]
@@ -144,7 +145,8 @@ const stringTests = [
          {
             max_date: {
                hours: 20,
-               minutes: 0
+               minutes: 0,
+               isFixed: true
             },
             period_time: {
                minutes: 15
@@ -154,7 +156,8 @@ const stringTests = [
                dates: 19,
                hours: 9,
                minutes: 0,
-               months: 8
+               months: 8,
+               isFixed: true
             }
          }
       ]

@@ -51,7 +51,8 @@ const stringTests = [
                dates: 6,
                hours: 15,
                minutes: 59,
-               months: 3
+               months: 3,
+               isFixed: true
             }
          },
          {
@@ -88,7 +89,8 @@ const stringTests = [
             string: 'Это новый контекст а то другой',
             target_date: {
                hours: 15,
-               minutes: 0
+               minutes: 0,
+               isFixed: true
             }
          },
          {
@@ -97,7 +99,8 @@ const stringTests = [
             string: 'рядом с ним еще один января',
             target_date: {
                hours: 10,
-               minutes: 0
+               minutes: 0,
+               isFixed: true
             }
          }
       ]
@@ -130,7 +133,8 @@ const stringTests = [
             string: 'то что',
             target_date: {
                hours: 10,
-               minutes: 20
+               minutes: 20,
+               isFixed: true
             }
          }
       ]
@@ -200,6 +204,7 @@ const stringTests = [
                hours: 15,
                minutes: 0,
                months: 3,
+               isFixed: true
             }
          }
       ]
@@ -216,6 +221,7 @@ const stringTests = [
                hours: 15,
                minutes: 30,
                months: 11,
+               isFixed: true
             }
          }
       ]
@@ -254,7 +260,8 @@ const stringTests = [
                hours: 5,
                minutes: 6,
                months: now.getUTCMonth(),
-               years: 2037
+               years: 2037,
+               isFixed: true
             }
          },
          {
