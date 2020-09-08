@@ -399,6 +399,21 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'что-то до 10 числа 5 часов 20 минут',
+      outs: [
+         {
+            max_date: {
+               dates: 10,
+               hours: 5,
+               minutes: 20
+            },
+            period_time: {},
+            string: 'что-то',
+            target_date: {}
+         }
+      ]
    }
 ];
 
