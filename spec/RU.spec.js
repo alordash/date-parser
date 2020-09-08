@@ -366,10 +366,7 @@ const stringTests = [
             period_time: {
                dates: 1
             },
-            string: 'не что-то',
-            target_date: {
-               dates: now.getUTCDate() + 1,
-            }
+            string: 'не что-то'
          }
       ]
    },
