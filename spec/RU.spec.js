@@ -420,8 +420,12 @@ const stringTests = [
             period_time: {},
             string: 'азбука',
             target_date: {
+               dates: now.getUTCDate(),
                hours: now.getHours(),
-               minutes: now.getMinutes() + 30,
+               minutes: now.getUTCMinutes() + 30,
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds(),
+               years: now.getUTCFullYear(),
                isOffset: true
             }
          }
