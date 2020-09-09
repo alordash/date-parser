@@ -147,7 +147,7 @@ const stringTests = [
             period_time: {},
             string: 'Сходить на улицу',
             target_date: {
-               dates: now.getUTCDate() + (day >= 3 ? 7 + 3 - day : 3 - day),
+               dates: now.getUTCDate() + (day > 3 ? 7 + 3 - day : 3 - day),
                hours: 7,
                minutes: 1,
                isFixed: true
@@ -409,6 +409,19 @@ const stringTests = [
             period_time: {},
             string: 'что-то',
             target_date: {}
+         }
+      ]
+   },
+   {
+      in: 'азбука через полчаса',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'азбука',
+            target_date: {
+               minutes: now.getMinutes() + 30
+            }
          }
       ]
    }
