@@ -420,7 +420,9 @@ const stringTests = [
             period_time: {},
             string: 'азбука',
             target_date: {
-               minutes: now.getMinutes() + 30
+               hours: now.getHours(),
+               minutes: now.getMinutes() + 30,
+               isOffset: true
             }
          }
       ]
