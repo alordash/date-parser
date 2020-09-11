@@ -161,6 +161,21 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'every 5 minutes until 20 hours',
+      outs: [
+         {
+            max_date: {
+               hours: 20
+            },
+            period_time: {
+               minutes: 5
+            },
+            string: '',
+            target_date: {}
+         }
+      ]
    }
 ];
 
