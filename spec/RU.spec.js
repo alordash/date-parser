@@ -430,6 +430,20 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'тест на без 15 10 вечера',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'тест',
+            target_date: {
+               hours: 21,
+               minutes: 45
+            }
+         }
+      ]
    }
 ];
 
