@@ -101,7 +101,7 @@ const stringTests = [
             period_time: {},
             string: 'Buy milk and wash car Wash my car',
             target_date: {
-               dates: now.getUTCDate() + (day >= 1 ? 7 + 1 - day : 1 - day),
+               dates: now.getUTCDate() + (day > 1 ? 7 + 1 - day : 1 - day),
                isOffset: false
             }
          },
@@ -174,6 +174,22 @@ const stringTests = [
             },
             string: '',
             target_date: {}
+         }
+      ]
+   },
+   {
+      in: 'Water flowers after tomorrow at 10 minutes to 7 p.m.',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'Water flowers',
+            target_date: {
+               dates: now.getUTCDate() + 2,
+               hours: 18,
+               isFixed: true,
+               minutes: 50
+            }
          }
       ]
    }
