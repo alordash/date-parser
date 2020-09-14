@@ -1,6 +1,6 @@
 {
   "name": "@alordash/date-parser",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Extracts date from human message.",
   "main": "index.js",
   "scripts": {
