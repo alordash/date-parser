@@ -353,7 +353,7 @@ const stringTests = [
             },
             string: 'что-то',
             target_date: {
-               dates: now.getUTCDate() + (day >= 1 ? 7 + 1 - day : 1 - day),
+               dates: now.getUTCDate() + (day > 1 ? 7 + 1 - day : 1 - day),
             }
          }
       ]
