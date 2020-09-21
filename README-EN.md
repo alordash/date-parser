@@ -129,5 +129,5 @@ Composes all found time types to dates and returns {
 
 } object.  
   
-Using current time values (**new Date()**) for not found target_dates' and max_dates' time types.  
+Using current time values (**new Date()**) for not found target_dates and max_dates time types.  
 Using null time values (**new Date(0)**) for not found period_time time types.  
