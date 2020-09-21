@@ -1,6 +1,6 @@
-META;
-is_regex;
-1;
-regular expression;regex char
-,;!
-\.;!
+META;;;;;
+;;;;;
+;;;;;
+regular expression;regex char;errors limit;value;maximum;is_regex
+,;!;0;0;0;1
+\.;!;0;0;0;1
