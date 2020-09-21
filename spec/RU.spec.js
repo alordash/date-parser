@@ -444,6 +444,33 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'кратко через 20С 2ч 5м 5д 20г и в 6М что-то',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'кратко',
+            target_date: {
+               dates: now.getUTCDate() + 5,
+               hours: now.getUTCHours() + 2,
+               isOffset: true,
+               minutes: now.getUTCMinutes() + 5,
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds() + 20,
+               years: now.getUTCFullYear() + 20
+            }
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'что-то',
+            target_date: {
+               months: 5
+            }
+         }
+      ]
    }
 ];
 
