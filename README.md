@@ -49,7 +49,7 @@ $ npm i @alordash/date-parser
 * ParsedDate.isOffset       {**Boolean**}        — является ли описанием даты с помощью слова "*через*".  
 * ParsedDate.isFixed        {**Boolean**}        — содержит ли даты с точным определением (например "9 часов **утра**").  
 
-### Функция parseDate(string: String, errorLimit: Number, minimumPrevalence: Number): {Array.\<ParsedDates\>}
+### Функция parseDate(string, errorLimit, minimumPrevalence): {Array.\<ParsedDates\>}
 
 #### Аргументы
 
