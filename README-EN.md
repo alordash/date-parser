@@ -121,13 +121,13 @@ Returns event description.
 
 ### ParsedDate.valueOf(): {{target_date: Date, period_time: Date, max_date: Date}}
 
-Composes all found time types to dates and returns {
-
+Composes all found time types to dates and returns  
+```javascript
+{
     target_date: Date,  
     period_time: Date,  
     max_date: Date  
-
-} object.  
-  
+}
+```  
 Using current time values (**new Date()**) for not found target_dates and max_dates time types.  
 Using null time values (**new Date(0)**) for not found period_time time types.  
