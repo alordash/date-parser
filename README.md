@@ -122,13 +122,12 @@ console.log('событие :>> ', JSON.stringify(result[0].string));
 ### ParsedDate.valueOf(): {{target_date: Date, period_time: Date, max_date: Date}}
 
 Собирает все найденные типы времен в дату и возвращает объект типа  
+```javascript
 {
-
     target_date: Date,  
     period_time: Date,  
     max_date: Date  
-
 }  
-  
+```  
 Для не найденных типов времени у target_dates и max_dates используются текущие значения даты (**new Date()**).  
 Для не найденных типов времени у period_times используются значения нулевой даты (**new Date(0)**).  
