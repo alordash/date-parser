@@ -66,7 +66,7 @@ let string = 'Вернуться домой в 8:30 вечера и пригот
 let result = parseDate(string);
 
 console.log('время 1 :>> ', JSON.stringify(result[0].target_date));
-//=> вреия 1 :>>  {"minutes":30,"hours":20}
+//=> время 1 :>>  {"minutes":30,"hours":20}
 
 console.log('событие 1 :>> ', result[0].string);
 //=> событие 1 :>> Вернуться домой и приготовить ужин
