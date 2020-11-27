@@ -49,7 +49,7 @@ Every ParsedDate object represents particular date and event retrieved from sour
 * ParsedDate.isOffset       {**Boolean**}        — is this date determined with offset (using word "*in*").  
 * ParsedDate.isFixed        {**Boolean**}        — does contain dates with unambiguous definition (e.g. "9 **a.m.**").  
 
-### Function parseDate(): {Array.\<ParsedDates\>}
+### Function parseDate(string, errorLimit, minimumPrevalence): {Array.\<ParsedDates\>}
 
 #### Arguments
 
