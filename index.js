@@ -1,10 +1,1 @@
 module.exports = require('./lib/date-parser');
-const { parseDate, extractRegexChars } = require('./lib/date-parser');
-const original = 'а тут ты 20 минут утром русский написал и всн';
-const res = parseDate(original, 1, 50);
-const chars = extractRegexChars(original, 1);
-let regexs = '';
-chars.forEach(e => regexs += e.regex_char);
-console.log('regexs :>> ', regexs);
-console.log('res :>> ', res);
-console.log('exiting . . . ');
