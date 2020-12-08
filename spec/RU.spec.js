@@ -471,6 +471,21 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'а тут ты 20 минут утром русский написал и всн',
+      outs:[
+         {
+            max_date: {},
+            period_time: {},
+            string: 'а тут ты утром русский написал и всн',
+            target_date:{
+               isFixed: false,
+               isOffset: false,
+               minutes: 20
+            }
+         }
+      ]
    }
 ];
 
