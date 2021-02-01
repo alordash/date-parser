@@ -495,6 +495,21 @@ const stringTests = [
             }
          }
       ]
+   }, {
+      in: 'тест в foo. тест 18:30',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'тест в foo. тест',
+            target_date: {
+               isFixed: false,
+               isOffset: false,
+               hours: 18,
+               minutes: 30
+            }
+         }
+      ]
    }
 ];
 
