@@ -22,6 +22,7 @@
     "parsing"
   ],
   "dependencies": {
-    "@alordash/damerau-levenshtein": "^1.0.7"
+    "@alordash/damerau-levenshtein": "^1.0.7",
+    "@alordash/parse-word-to-number": "^2.2.0"
   }
 }
