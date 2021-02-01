@@ -4,7 +4,7 @@ const { isTimeType, isDateType } = require('../lib/date-cases');
 const now = new Date();
 const day = now.getUTCDay();
 const nextSaturday = (day >= 6 ? 7 + 6 - day : 6 - day);
-console.log('day :>> ', day);
+
 const stringTests = [
    {
       in: "something at 6 o'clock pm",
@@ -21,7 +21,7 @@ const stringTests = [
       ]
    },
    {
-      in: 'go to the cinema on next thursday at 12:30 34 seconds',
+      in: 'go to the cinema on next   thursday at 12:30 34 seconds',
       outs: [
          {
             max_date: {},
@@ -33,12 +33,13 @@ const stringTests = [
                minutes: 30,
                seconds: 34,
                isFixed: true
-            }
+            },
+            precisely: false
          }
       ]
    },
    {
-      in: 'open window on submarine at 5 minutes to 7 pm',
+      in: 'open window on submarine at      5 minutes to 7 pm',
       outs: [
          {
             max_date: {},
@@ -53,7 +54,7 @@ const stringTests = [
       ]
    },
    {
-      in: 'visit doctor from 9 a.m. to 11 p.m. on next Saturday and go to shop at 7 p.m.',
+      in: 'visit doctor from 9 a.m.  to 11 p.m. on next Saturday and go to shop at 7 p.m.',
       outs: [
          {
             max_date: {
@@ -66,7 +67,8 @@ const stringTests = [
             target_date: {
                hours: 9,
                isFixed: true
-            }
+            },
+            precisely: false
          },
          {
             max_date: {},
@@ -80,7 +82,7 @@ const stringTests = [
       ]
    },
    {
-      in: 'come home in 10 seconds 20 minutes 30 hours. Buy milk and wash car on monday Wash my car ',
+      in: 'come home in 10  seconds 20 minutes  30 hours. Buy milk  and wash car on monday Wash my car ',
       outs: [
          {
             max_date: {},
@@ -94,21 +96,23 @@ const stringTests = [
                seconds: now.getUTCSeconds() + 10,
                years: now.getUTCFullYear(),
                isOffset: true
-            }
+            },
+            precisely: false
          },
          {
             max_date: {},
             period_time: {},
-            string: 'Buy milk and wash car Wash my car',
+            string: 'Buy  milk and wash car Wash my car',
             target_date: {
                dates: now.getUTCDate() + (day > 1 ? 7 + 1 - day : 1 - day),
                isOffset: false
-            }
+            },
+            precisely: false
          },
       ]
    },
    {
-      in: 'come home at half past 12',
+      in: 'come  home at half past 12',
       outs: [
          {
             max_date: {},
@@ -122,7 +126,7 @@ const stringTests = [
       ]
    },
    {
-      in: 'Turn off the gas in 1 hour 20 minutes',
+      in: 'Turn off the gas in 1 hour 20  minutes',
       outs: [
          {
             max_date: {},
@@ -135,7 +139,8 @@ const stringTests = [
                months: now.getUTCMonth(),
                seconds: now.getUTCSeconds(),
                years: now.getUTCFullYear()
-            }
+            },
+            precisely: false
          }
       ]
    },
@@ -189,7 +194,8 @@ const stringTests = [
                hours: 18,
                isFixed: true,
                minutes: 50
-            }
+            },
+            precisely: false
          }
       ]
    },
@@ -208,7 +214,8 @@ const stringTests = [
                months: now.getUTCMonth(),
                seconds: now.getUTCSeconds() + 20,
                years: now.getUTCFullYear() + 20
-            }
+            },
+            precisely: false
          },
          {
             max_date: {},
@@ -222,20 +229,55 @@ const stringTests = [
    }
 ];
 
+function formatText(string) {
+   return string.replace(/  +/g, ' ');
+}
+
+let matchers = {
+   toEqual: function (matchersUtil) {
+      return {
+         compare: function (actual, expected, isPrecise) {
+            let result = {};
+            if (isPrecise) {
+               result.pass = actual == expected;
+            } else {
+               result.pass = Math.abs(actual - expected) <= 1;
+            }
+            if(!result.pass) {
+               result.message = `Expected ${expected} to equal ${actual}.`;
+            }
+            return result;
+         }
+      };
+   }
+}
+
 describe('[EN]', function () {
+   beforeEach(function () {
+      jasmine.addMatchers(matchers);
+   });
+
    for (const test of stringTests) {
       const results = parseDate(test.in);
-      let i = results.length;
       it(test.in, function () {
-         while (i--) {
+         for (let i = 0; i < results.length / 2; i++) {
             const result = results[i];
             const out = test.outs[i];
+            let precise = false;
+            if(typeof(out.precisely) != 'undefined') {
+               precise = out.precisely;
+            }
             for (const key in out) {
                if (out.hasOwnProperty(key)) {
                   const res_property = result[key];
                   const out_property = out[key];
                   if (!isDateType(key)) {
-                     expect(res_property).toBe(out_property);
+                     var type = typeof(out_property);
+                     if(type == 'string') {
+                        expect(res_property).toBe(formatText(out_property));
+                     } else if(type != 'boolean'){
+                        expect(res_property).toBe(out_property);
+                     }
                   } else {
                      for (const time_property in res_property) {
                         if (res_property.hasOwnProperty(time_property)) {
@@ -244,7 +286,7 @@ describe('[EN]', function () {
                                  expect(res_property[time_property]).toBe(undefined);
                               }
                            } else {
-                              expect(res_property[time_property]).toBe(out_property[time_property]);
+                              expect(res_property[time_property]).toEqual(out_property[time_property], precise);
                            }
                         }
                      }

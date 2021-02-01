@@ -3,7 +3,7 @@ const { isTimeType, isDateType } = require('../lib/date-cases');
 
 const now = new Date();
 const day = now.getUTCDay();
-console.log('day :>> ', day);
+
 const stringTests = [
    {
       in: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
@@ -18,7 +18,8 @@ const stringTests = [
                minutes: 59,
                months: now.getUTCMonth(),
                isFixed: true
-            }
+            },
+            precisely: false
          },
          {
             max_date: {},
@@ -36,7 +37,8 @@ const stringTests = [
             target_date: {
                dates: now.getUTCDate() + 2,
                months: now.getUTCMonth()
-            }
+            },
+            precisely: false
          }
       ]
    },
@@ -151,7 +153,8 @@ const stringTests = [
                hours: 7,
                minutes: 1,
                isFixed: true
-            }
+            },
+            precisely: false
          }
       ]
    },
@@ -262,7 +265,8 @@ const stringTests = [
                months: now.getUTCMonth(),
                years: 2037,
                isFixed: true
-            }
+            },
+            precisely: false
          },
          {
             max_date: {},
@@ -290,7 +294,8 @@ const stringTests = [
                seconds: now.getUTCSeconds() + 30,
                years: now.getUTCFullYear() + 34,
                isOffset: true
-            }
+            },
+            precisely: false
          },
          {
             max_date: {},
@@ -320,7 +325,8 @@ const stringTests = [
                seconds: now.getUTCSeconds(),
                years: now.getUTCFullYear(),
                isOffset: true
-            }
+            },
+            precisely: false
          },
          {
             max_date: {
@@ -354,7 +360,8 @@ const stringTests = [
             string: 'что-то',
             target_date: {
                dates: now.getUTCDate() + (day > 1 ? 7 + 1 - day : 1 - day),
-            }
+            },
+            precisely: false
          }
       ]
    },
@@ -427,7 +434,8 @@ const stringTests = [
                seconds: now.getUTCSeconds(),
                years: now.getUTCFullYear(),
                isOffset: true
-            }
+            },
+            precisely: false
          }
       ]
    },
@@ -460,7 +468,8 @@ const stringTests = [
                months: now.getUTCMonth(),
                seconds: now.getUTCSeconds() + 20,
                years: now.getUTCFullYear() + 20
-            }
+            },
+            precisely: false
          },
          {
             max_date: {},
@@ -474,12 +483,12 @@ const stringTests = [
    },
    {
       in: 'а тут ты 20 минут утром русский написал и всн',
-      outs:[
+      outs: [
          {
             max_date: {},
             period_time: {},
             string: 'а тут ты утром русский написал и всн',
-            target_date:{
+            target_date: {
                isFixed: false,
                isOffset: false,
                minutes: 20
@@ -489,20 +498,55 @@ const stringTests = [
    }
 ];
 
+function formatText(string) {
+   return string.replace(/  +/g, ' ');
+}
+
+let matchers = {
+   toEqual: function (matchersUtil) {
+      return {
+         compare: function (actual, expected, isPrecise) {
+            let result = {};
+            if (isPrecise) {
+               result.pass = actual == expected;
+            } else {
+               result.pass = Math.abs(actual - expected) <= 1;
+            }
+            if(!result.pass) {
+               result.message = `Expected ${expected} to equal ${actual}.`;
+            }
+            return result;
+         }
+      };
+   }
+}
+
 describe('[RU]', function () {
+   beforeEach(function () {
+      jasmine.addMatchers(matchers);
+   });
+
    for (const test of stringTests) {
       const results = parseDate(test.in);
-      let i = results.length;
       it(test.in, function () {
-         while (i--) {
+         for (let i = 0; i < results.length / 2; i++) {
             const result = results[i];
             const out = test.outs[i];
+            let precise = false;
+            if(typeof(out.precisely) != 'undefined') {
+               precise = out.precisely;
+            }
             for (const key in out) {
                if (out.hasOwnProperty(key)) {
                   const res_property = result[key];
                   const out_property = out[key];
                   if (!isDateType(key)) {
-                     expect(res_property).toBe(out_property);
+                     var type = typeof(out_property);
+                     if(type == 'string') {
+                        expect(res_property).toBe(formatText(out_property));
+                     } else if(type != 'boolean'){
+                        expect(res_property).toBe(out_property);
+                     }
                   } else {
                      for (const time_property in res_property) {
                         if (res_property.hasOwnProperty(time_property)) {
@@ -511,7 +555,7 @@ describe('[RU]', function () {
                                  expect(res_property[time_property]).toBe(undefined);
                               }
                            } else {
-                              expect(res_property[time_property]).toBe(out_property[time_property]);
+                              expect(res_property[time_property]).toEqual(out_property[time_property], precise);
                            }
                         }
                      }
