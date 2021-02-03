@@ -495,7 +495,8 @@ const stringTests = [
             }
          }
       ]
-   }, {
+   },
+   {
       in: 'тест в foo. тест 18:30',
       outs: [
          {
@@ -507,6 +508,57 @@ const stringTests = [
                isOffset: false,
                hours: 18,
                minutes: 30
+            }
+         }
+      ]
+   },
+   {
+      in: 'что-т каждые 3 час 2 дней 5 минут по 5 раз',
+      outs: [
+         {
+            max_date: {
+               minutes: 25,
+               hours: 15,
+               dates: 10,
+               isFixed: false,
+               isOffset: false
+            },
+            period_time: {
+               minutes: 5,
+               hours: 3,
+               dates: 2,
+               isFixed: false,
+               isOffset: false
+            },
+            string: 'что-т',
+            target_date: {}
+         }
+      ]
+   },
+   {
+      in: 'тест 5 минут по 20 раз и еще текст, и еще тест через 4 минуты',
+      outs: [
+         {
+            max_date: {
+               minutes: 100,
+               isFixed: false,
+               isOffset: false
+            },
+            period_time: {
+               minutes: 5,
+               isFixed: false,
+               isOffset: false
+            },
+            string: 'тест и еще текст',
+            target_date: {}
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'и еще тест',
+            target_date: {
+               minutes: 4,
+               isOffset: true
             }
          }
       ]
@@ -527,7 +579,7 @@ let matchers = {
             } else {
                result.pass = Math.abs(actual - expected) <= 1;
             }
-            if(!result.pass) {
+            if (!result.pass) {
                result.message = `Expected ${expected} to equal ${actual}.`;
             }
             return result;
@@ -548,7 +600,7 @@ describe('[RU]', function () {
             const result = results[i];
             const out = test.outs[i];
             let precise = false;
-            if(typeof(out.precisely) != 'undefined') {
+            if (typeof (out.precisely) != 'undefined') {
                precise = out.precisely;
             }
             for (const key in out) {
@@ -556,10 +608,10 @@ describe('[RU]', function () {
                   const res_property = result[key];
                   const out_property = out[key];
                   if (!isDateType(key)) {
-                     var type = typeof(out_property);
-                     if(type == 'string') {
+                     var type = typeof (out_property);
+                     if (type == 'string') {
                         expect(res_property).toBe(formatText(out_property));
-                     } else if(type != 'boolean'){
+                     } else if (type != 'boolean') {
                         expect(res_property).toBe(out_property);
                      }
                   } else {
