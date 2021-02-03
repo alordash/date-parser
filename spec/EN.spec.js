@@ -305,21 +305,21 @@ const stringTests = [
       in: 'gest 10 times every half hour and something in 10 minutes',
       outs: [
          {
-            max_date:{
+            max_date: {
                minutes: 300,
                isOffset: true
             },
-            period_time:{
+            period_time: {
                minutes: 30
             },
             string: 'gest',
-            target_date:{}
+            target_date: {}
          },
          {
-            max_date:{},
-            period_time:{},
-            string:'something',
-            target_date:{
+            max_date: {},
+            period_time: {},
+            string: 'something',
+            target_date: {
                dates: now.getUTCDate(),
                hours: now.getUTCHours(),
                isOffset: true,
@@ -327,6 +327,41 @@ const stringTests = [
                months: now.getUTCMonth(),
                seconds: now.getUTCSeconds(),
                years: now.getUTCFullYear()
+            },
+            precisely: false
+         }
+      ]
+   },
+   {
+      in: '---——— in next day, and ———--- in next year',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: '---———',
+            target_date: {
+               dates: now.getUTCDate() + 1,
+               hours: now.getUTCHours(),
+               isOffset: true,
+               minutes: now.getUTCMinutes(),
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds(),
+               years: now.getUTCFullYear()
+            },
+            precisely: false
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: '———---',
+            target_date: {
+               dates: now.getUTCDate(),
+               hours: now.getUTCHours(),
+               isOffset: true,
+               minutes: now.getUTCMinutes(),
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds(),
+               years: now.getUTCFullYear() + 1
             },
             precisely: false
          }

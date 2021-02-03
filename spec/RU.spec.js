@@ -594,6 +594,46 @@ const stringTests = [
             target_date: {}
          }
       ]
+   },
+   {
+      in: 'ч-т-о-т-о в следующий час',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'ч-т-о-т-о',
+            target_date: {
+               dates: now.getUTCDate(),
+               hours: now.getUTCHours() + 1,
+               isOffset: true,
+               minutes: now.getUTCMinutes(),
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds(),
+               years: now.getUTCFullYear()
+            },
+            precisely: false
+         }
+      ]
+   },
+   {
+      in: 'отложить через день',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'отложить',
+            target_date: {
+               dates: now.getUTCDate() + 1,
+               hours: now.getUTCHours(),
+               isOffset: true,
+               minutes: now.getUTCMinutes(),
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds(),
+               years: now.getUTCFullYear()
+            },
+            precisely: false
+         }
+      ]
    }
 ];
 
@@ -631,7 +671,7 @@ describe('[RU]', function () {
          for (let i = 0; i < results.length / 2; i++) {
             const result = results[i];
             const out = test.outs[i];
-            let precise = false;
+            let precise = true;
             if (typeof (out.precisely) != 'undefined') {
                precise = out.precisely;
             }
