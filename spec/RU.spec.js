@@ -504,7 +504,7 @@ const stringTests = [
             period_time: {},
             string: 'тест в foo. тест',
             target_date: {
-               isFixed: false,
+               isFixed: true,
                isOffset: false,
                hours: 18,
                minutes: 30
@@ -521,7 +521,7 @@ const stringTests = [
                hours: 15,
                dates: 10,
                isFixed: false,
-               isOffset: false
+               isOffset: true
             },
             period_time: {
                minutes: 5,
@@ -542,7 +542,7 @@ const stringTests = [
             max_date: {
                minutes: 100,
                isFixed: false,
-               isOffset: false
+               isOffset: true
             },
             period_time: {
                minutes: 5,
@@ -622,7 +622,11 @@ describe('[RU]', function () {
                                  expect(res_property[time_property]).toBe(undefined);
                               }
                            } else {
-                              expect(res_property[time_property]).toEqual(out_property[time_property], precise);
+                              if (typeof (out_property[time_property]) == 'boolean') {
+                                 expect(res_property[time_property]).toBe(out_property[time_property]);
+                              } else {
+                                 expect(res_property[time_property]).toEqual(out_property[time_property], precise);
+                              }
                            }
                         }
                      }

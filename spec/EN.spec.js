@@ -234,7 +234,8 @@ const stringTests = [
             max_date: {
                dates: 21,
                years: 3,
-               hours: 15
+               hours: 15,
+               isOffset: true
             },
             period_time: {
                dates: 7,
@@ -251,7 +252,8 @@ const stringTests = [
       outs: [
          {
             max_date: {
-               minutes: 5
+               minutes: 5,
+               isOffset: true
             },
             period_time: {
                minutes: 1
@@ -262,7 +264,8 @@ const stringTests = [
          {
             max_date: {
                dates: 8,
-               years: 4
+               years: 4,
+               isOffset: true
             },
             period_time: {
                dates: 4,
@@ -341,7 +344,11 @@ describe('[EN]', function () {
                                  expect(res_property[time_property]).toBe(undefined);
                               }
                            } else {
-                              expect(res_property[time_property]).toEqual(out_property[time_property], precise);
+                              if (typeof (out_property[time_property]) == 'boolean') {
+                                 expect(res_property[time_property]).toBe(out_property[time_property]);
+                              } else {
+                                 expect(res_property[time_property]).toEqual(out_property[time_property], precise);
+                              }
                            }
                         }
                      }
