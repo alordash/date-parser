@@ -300,6 +300,37 @@ const stringTests = [
             target_date: {}
          }
       ]
+   },
+   {
+      in: 'gest 10 times every half hour and something in 10 minutes',
+      outs: [
+         {
+            max_date:{
+               minutes: 300,
+               isOffset: true
+            },
+            period_time:{
+               minutes: 30
+            },
+            string: 'gest',
+            target_date:{}
+         },
+         {
+            max_date:{},
+            period_time:{},
+            string:'something',
+            target_date:{
+               dates: now.getUTCDate(),
+               hours: now.getUTCHours(),
+               isOffset: true,
+               minutes: now.getUTCMinutes() + 10,
+               months: now.getUTCMonth(),
+               seconds: now.getUTCSeconds(),
+               years: now.getUTCFullYear()
+            },
+            precisely: false
+         }
+      ]
    }
 ];
 

@@ -578,6 +578,22 @@ const stringTests = [
             target_date: {}
          }
       ]
+   },
+   {
+      in: 'тест каждые полчаса до 10 часов вечера',
+      outs: [
+         {
+            max_date: {
+               hours: 22,
+               isFixed: true
+            },
+            period_time: {
+               minutes: 30
+            },
+            string: "тест",
+            target_date: {}
+         }
+      ]
    }
 ];
 
