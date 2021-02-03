@@ -562,6 +562,22 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'выпить таблетки 5 раз каждые 30 минут',
+      outs: [
+         {
+            max_date: {
+               minutes: 150,
+               isOffset: true
+            },
+            period_time: {
+               minutes: 30,
+            },
+            string: 'выпить таблетки',
+            target_date: {}
+         }
+      ]
    }
 ];
 

@@ -284,6 +284,22 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'drink water 10 times every 40 minutes',
+      outs: [
+         {
+            max_date: {
+               minutes: 400,
+               isOffset: true
+            },
+            period_time: {
+               minutes: 40
+            },
+            string: 'drink water',
+            target_date: {}
+         }
+      ]
    }
 ];
 
