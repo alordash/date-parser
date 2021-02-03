@@ -226,6 +226,61 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'testset read every 7 days 1 year 5 hours for 3 times',
+      outs: [
+         {
+            max_date: {
+               dates: 21,
+               years: 3,
+               hours: 15
+            },
+            period_time: {
+               dates: 7,
+               years: 1,
+               hours: 5
+            },
+            string: 'testset read',
+            target_date: {}
+         }
+      ]
+   },
+   {
+      in: 'multy every minute 5 times, test every 4 days 2 year for 2 times, ok in 1 month',
+      outs: [
+         {
+            max_date: {
+               minutes: 5
+            },
+            period_time: {
+               minutes: 1
+            },
+            string: 'multy',
+            target_date: {}
+         },
+         {
+            max_date: {
+               dates: 8,
+               years: 4
+            },
+            period_time: {
+               dates: 4,
+               years: 2
+            },
+            string: 'test',
+            target_date: {}
+         },
+         {
+            max_date: {},
+            period_time: {},
+            string: 'ok',
+            target_date: {
+               months: 1,
+               isOffset: true
+            }
+         }
+      ]
    }
 ];
 
@@ -243,7 +298,7 @@ let matchers = {
             } else {
                result.pass = Math.abs(actual - expected) <= 1;
             }
-            if(!result.pass) {
+            if (!result.pass) {
                result.message = `Expected ${expected} to equal ${actual}.`;
             }
             return result;
@@ -264,7 +319,7 @@ describe('[EN]', function () {
             const result = results[i];
             const out = test.outs[i];
             let precise = false;
-            if(typeof(out.precisely) != 'undefined') {
+            if (typeof (out.precisely) != 'undefined') {
                precise = out.precisely;
             }
             for (const key in out) {
@@ -272,10 +327,10 @@ describe('[EN]', function () {
                   const res_property = result[key];
                   const out_property = out[key];
                   if (!isDateType(key)) {
-                     var type = typeof(out_property);
-                     if(type == 'string') {
+                     var type = typeof (out_property);
+                     if (type == 'string') {
                         expect(res_property).toBe(formatText(out_property));
-                     } else if(type != 'boolean'){
+                     } else if (type != 'boolean') {
                         expect(res_property).toBe(out_property);
                      }
                   } else {
