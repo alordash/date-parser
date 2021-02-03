@@ -149,7 +149,7 @@ const stringTests = [
             period_time: {},
             string: 'Сходить на улицу',
             target_date: {
-               dates: now.getUTCDate() + (day > 3 ? 7 + 3 - day : 3 - day),
+               dates: now.getDate() + (day >= 3 ? 7 + 3 - day : 3 - day),
                hours: 7,
                minutes: 1,
                isFixed: true
@@ -668,6 +668,7 @@ describe('[RU]', function () {
    for (const test of stringTests) {
       const results = parseDate(test.in);
       it(test.in, function () {
+         expect(results.length).toBeGreaterThanOrEqual(test.outs.length);
          for (let i = 0; i < results.length / 2; i++) {
             const result = results[i];
             const out = test.outs[i];

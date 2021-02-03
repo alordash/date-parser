@@ -2,7 +2,7 @@ const { parseDate } = require('../lib/date-parser');
 const { isTimeType, isDateType } = require('../lib/date-cases');
 
 const now = new Date();
-const day = now.getUTCDay();
+const day = now.getDay();
 const nextSaturday = (day >= 6 ? 7 + 6 - day : 6 - day);
 
 const stringTests = [
@@ -28,7 +28,7 @@ const stringTests = [
             period_time: {},
             string: 'go to the cinema',
             target_date: {
-               dates: now.getUTCDate() + (day >= 4 ? 7 + 4 - day : 4 - day),
+               dates: now.getDate() + (day >= 4 ? 7 + 4 - day : 4 - day),
                hours: 12,
                minutes: 30,
                seconds: 34,
