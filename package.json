@@ -11,7 +11,7 @@
     "url": "git+https://github.com/alordash/date-parser.git"
   },
   "author": "alordash",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/alordash/date-parser/issues"
   },
