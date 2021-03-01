@@ -366,6 +366,22 @@ const stringTests = [
             precisely: false
          }
       ]
+   },
+   {
+      in: 'Today at half past 20 will be evening',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'will be evening',
+            target_date: {
+               dates: now.getUTCDate(),
+               hours: 20,
+               minutes: 30,
+               months: now.getUTCMonth()
+            },
+         }
+      ]
    }
 ];
 

@@ -634,6 +634,22 @@ const stringTests = [
             precisely: false
          }
       ]
+   },
+   {
+      in: 'Сегодня в 21:00 будет вечер',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: 'будет вечер',
+            target_date: {
+               dates: now.getUTCDate(),
+               hours: 21,
+               minutes: 0,
+               months: now.getUTCMonth()
+            },
+         }
+      ]
    }
 ];
 
