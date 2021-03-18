@@ -650,6 +650,23 @@ const stringTests = [
             },
          }
       ]
+   },
+   {
+      in: 'каждые 10 дней в 23.30 текст',
+      outs: [
+         {
+            max_date: {},
+            period_time: {
+               dates: 10
+            },
+            string: 'текст',
+            target_date: {
+               hours: 23,
+               isFixed: true,
+               minutes: 30
+            }
+         }
+      ]
    }
 ];
 
