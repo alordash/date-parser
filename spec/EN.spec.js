@@ -398,6 +398,25 @@ const stringTests = [
             target_date: {}
          }
       ]
+   },
+   {
+      in: 'test every 3 months 4 hours 10 minutes 5 seconds until 9 a.m.',
+      outs: [
+         {
+            max_date: {
+               hours: 9,
+               isFixed: true
+            },
+            period_time: {
+               dates: 90,
+               hours: 4,
+               minutes: 10,
+               seconds: 5
+            },
+            string: 'test',
+            target_date: {}
+         }
+      ]
    }
 ];
 
