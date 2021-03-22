@@ -667,6 +667,22 @@ const stringTests = [
             }
          }
       ]
+   },
+   {
+      in: 'тест каждые 3 месяца 4 часа 10 минут 5 секунд',
+      outs: [
+         {
+            max_date: {},
+            period_time: {
+               dates: 90,
+               hours: 4,
+               minutes: 10,
+               seconds: 5
+            },
+            string: 'тест',
+            target_date: {}
+         }
+      ]
    }
 ];
 
