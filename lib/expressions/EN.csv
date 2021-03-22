@@ -8,7 +8,9 @@ hour;h;0;0;24;0
 hours;h;0;0;24;0
 o'clock;h;0;0;24;0
 week;w;0;0;7;0
+weeks;w;0;0;7;0
 month;K;0;0;0;0
+months;K;0;0;0;0
 year;y;0;0;0;0
 january;M;1;1;31;0
 february;M;2;2;29;0
