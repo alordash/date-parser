@@ -287,7 +287,6 @@ const stringTests = [
             period_time: {},
             string: 'Полить цветы 13 ноября 2022 года',
             target_date: {
-               dates: now.getUTCDate(),
                hours: now.getUTCHours() + 10,
                minutes: now.getUTCMinutes() + 40,
                months: now.getUTCMonth() + 2,
@@ -318,12 +317,7 @@ const stringTests = [
             period_time: {},
             string: 'купить цветы',
             target_date: {
-               dates: now.getUTCDate(),
-               hours: now.getUTCHours(),
                minutes: now.getUTCMinutes() + 10,
-               months: now.getUTCMonth(),
-               seconds: now.getUTCSeconds(),
-               years: now.getUTCFullYear(),
                isOffset: true
             },
             precisely: false
@@ -427,12 +421,7 @@ const stringTests = [
             period_time: {},
             string: 'азбука',
             target_date: {
-               dates: now.getUTCDate(),
-               hours: now.getUTCHours(),
                minutes: now.getUTCMinutes() + 30,
-               months: now.getUTCMonth(),
-               seconds: now.getUTCSeconds(),
-               years: now.getUTCFullYear(),
                isOffset: true
             },
             precisely: false
@@ -465,7 +454,6 @@ const stringTests = [
                hours: now.getUTCHours() + 2,
                isOffset: true,
                minutes: now.getUTCMinutes() + 5,
-               months: now.getUTCMonth(),
                seconds: now.getUTCSeconds() + 20,
                years: now.getUTCFullYear() + 20
             },
@@ -557,9 +545,10 @@ const stringTests = [
             period_time: {},
             string: 'и еще тест',
             target_date: {
-               minutes: 4,
+               minutes: now.getUTCMinutes() + 4,
                isOffset: true
-            }
+            },
+            precisely: false
          }
       ]
    },
@@ -603,13 +592,8 @@ const stringTests = [
             period_time: {},
             string: 'ч-т-о-т-о',
             target_date: {
-               dates: now.getUTCDate(),
                hours: now.getUTCHours() + 1,
-               isOffset: true,
-               minutes: now.getUTCMinutes(),
-               months: now.getUTCMonth(),
-               seconds: now.getUTCSeconds(),
-               years: now.getUTCFullYear()
+               isOffset: true
             },
             precisely: false
          }
@@ -624,12 +608,7 @@ const stringTests = [
             string: 'отложить',
             target_date: {
                dates: now.getUTCDate() + 1,
-               hours: now.getUTCHours(),
                isOffset: true,
-               minutes: now.getUTCMinutes(),
-               months: now.getUTCMonth(),
-               seconds: now.getUTCSeconds(),
-               years: now.getUTCFullYear()
             },
             precisely: false
          }

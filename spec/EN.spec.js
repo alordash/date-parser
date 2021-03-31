@@ -89,12 +89,9 @@ const stringTests = [
             period_time: {},
             string: 'come home',
             target_date: {
-               dates: now.getUTCDate(),
                hours: now.getUTCHours() + 30,
                minutes: now.getUTCMinutes() + 20,
-               months: now.getUTCMonth(),
                seconds: now.getUTCSeconds() + 10,
-               years: now.getUTCFullYear(),
                isOffset: true
             },
             precisely: false
@@ -133,12 +130,8 @@ const stringTests = [
             period_time: {},
             string: 'Turn off the gas',
             target_date: {
-               dates: now.getUTCDate(),
                hours: now.getUTCHours() + 1,
-               minutes: now.getUTCMinutes() + 20,
-               months: now.getUTCMonth(),
-               seconds: now.getUTCSeconds(),
-               years: now.getUTCFullYear()
+               minutes: now.getUTCMinutes() + 20
             },
             precisely: false
          }
@@ -211,7 +204,6 @@ const stringTests = [
                hours: now.getUTCHours() + 2,
                isOffset: true,
                minutes: now.getUTCMinutes() + 5,
-               months: now.getUTCMonth(),
                seconds: now.getUTCSeconds() + 20,
                years: now.getUTCFullYear() + 20
             },
@@ -341,12 +333,7 @@ const stringTests = [
             string: '---———',
             target_date: {
                dates: now.getUTCDate() + 1,
-               hours: now.getUTCHours(),
-               isOffset: true,
-               minutes: now.getUTCMinutes(),
-               months: now.getUTCMonth(),
-               seconds: now.getUTCSeconds(),
-               years: now.getUTCFullYear()
+               isOffset: true
             },
             precisely: false
          },
@@ -355,12 +342,7 @@ const stringTests = [
             period_time: {},
             string: '———---',
             target_date: {
-               dates: now.getUTCDate(),
-               hours: now.getUTCHours(),
                isOffset: true,
-               minutes: now.getUTCMinutes(),
-               months: now.getUTCMonth(),
-               seconds: now.getUTCSeconds(),
                years: now.getUTCFullYear() + 1
             },
             precisely: false
