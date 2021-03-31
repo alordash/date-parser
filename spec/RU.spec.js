@@ -1,5 +1,5 @@
 const { parseDate } = require('../lib/date-parser');
-const { isTimeType, isDateType } = require('../lib/date-cases');
+const { isTimeType, isDateType } = require('../lib/date-cases/date-cases');
 
 const now = new Date();
 const day = now.getUTCDay();
