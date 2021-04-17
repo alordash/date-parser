@@ -399,6 +399,20 @@ const stringTests = [
             target_date: {}
          }
       ]
+   },
+   {
+      in: '12 o\'clock',
+      outs: [
+         {
+            max_date: {},
+            period_time: {},
+            string: '',
+            target_date: {
+               hours: 12,
+               isFixed: true
+            }
+         }
+      ]
    }
 ];
 
