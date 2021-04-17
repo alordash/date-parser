@@ -1,7 +1,10 @@
+const { UnitTest } = require('./UnitTest');
+
 const now = new Date();
 const day = now.getDay();
 const nextSaturday = (day >= 6 ? 7 + 6 - day : 6 - day);
 
+/**@type {Array.<UnitTest>} */
 const tests = [
    {
       in: "something at 6 o'clock pm",
@@ -268,7 +271,7 @@ const tests = [
             period_time: {},
             string: 'ok',
             target_date: {
-               months: 1,
+               months: now.getUTCMonth() + 1,
                isOffset: true
             }
          }
@@ -309,13 +312,8 @@ const tests = [
             period_time: {},
             string: 'something',
             target_date: {
-               dates: now.getUTCDate(),
-               hours: now.getUTCHours(),
                isOffset: true,
-               minutes: now.getUTCMinutes() + 10,
-               months: now.getUTCMonth(),
-               seconds: now.getUTCSeconds(),
-               years: now.getUTCFullYear()
+               minutes: now.getUTCMinutes() + 10
             },
             precisely: false
          }

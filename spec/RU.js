@@ -1,6 +1,9 @@
+const { UnitTest } = require('./UnitTest');
+
 const now = new Date();
 const day = now.getUTCDay();
 
+/**@type {Array.<UnitTest>} */
 const tests = [
    {
       in: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
@@ -540,7 +543,7 @@ const tests = [
          {
             max_date: {},
             period_time: {},
-            string: 'и еще тест',
+            string: 'еще тест',
             target_date: {
                minutes: now.getUTCMinutes() + 4,
                isOffset: true
