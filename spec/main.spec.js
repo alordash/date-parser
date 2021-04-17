@@ -20,31 +20,31 @@ function RunTests(tests) {
                 if (typeof (out.precisely) != 'undefined') {
                     precise = out.precisely;
                 }
-                for (const key in out) {
-                    if (out.hasOwnProperty(key)) {
-                        const res_property = result[key];
-                        const out_property = out[key];
-                        if (!isDateType(key)) {
-                            var type = typeof (out_property);
-                            if (type == 'string') {
-                                expect(res_property).toBe(formatText(out_property));
-                            } else if (type != 'boolean') {
-                                expect(res_property).toBe(out_property);
+                for (const key in result) {
+                    if (!isDateType(key) && key != 'string') {
+                        continue;
+                    }
+                    const res_property = result[key];
+                    let out_property = out[key];
+                    if (typeof (out_property) == 'undefined') {
+                        out_property = {};
+                    }
+                    if (!isDateType(key)) {
+                        expect(res_property).toBe(formatText(out_property));
+                    } else {
+                        for (const time_property in res_property) {
+                            if (!res_property.hasOwnProperty(time_property)) {
+                                continue;
                             }
-                        } else {
-                            for (const time_property in res_property) {
-                                if (res_property.hasOwnProperty(time_property)) {
-                                    if (typeof (out_property[time_property]) == 'undefined') {
-                                        if (isTimeType(time_property)) {
-                                            expect(res_property[time_property]).toBe(undefined);
-                                        }
-                                    } else {
-                                        if (typeof (out_property[time_property]) == 'boolean') {
-                                            expect(res_property[time_property]).toBe(out_property[time_property]);
-                                        } else {
-                                            expect(res_property[time_property]).toEqual(out_property[time_property], precise);
-                                        }
-                                    }
+                            if (typeof (out_property[time_property]) == 'undefined') {
+                                if (isTimeType(time_property)) {
+                                    expect(res_property[time_property]).toBe(undefined);
+                                }
+                            } else {
+                                if (typeof (out_property[time_property]) == 'boolean') {
+                                    expect(res_property[time_property]).toBe(out_property[time_property]);
+                                } else {
+                                    expect(res_property[time_property]).toEqual(out_property[time_property], precise);
                                 }
                             }
                         }
@@ -89,3 +89,7 @@ describe('[EN]', function () {
 
     RunTests(ENtests);
 });
+
+module.exports = {
+    RunTests
+};
