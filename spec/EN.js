@@ -10,8 +10,6 @@ const tests = [
       in: "something at 6 o'clock pm",
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'something',
             target_date: {
                hours: 18,
@@ -24,8 +22,6 @@ const tests = [
       in: 'go to the cinema on next   thursday at 12:30 34 seconds',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'go to the cinema',
             target_date: {
                dates: now.getDate() + (day >= 4 ? 7 + 4 - day : 4 - day),
@@ -42,8 +38,6 @@ const tests = [
       in: 'open window on submarine at      5 minutes to 7 pm',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'open window on submarine',
             target_date: {
                hours: 18,
@@ -62,7 +56,6 @@ const tests = [
                hours: 23,
                isFixed: true
             },
-            period_time: {},
             string: 'visit doctor',
             target_date: {
                hours: 9,
@@ -71,8 +64,6 @@ const tests = [
             precisely: false
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'go to shop',
             target_date: {
                hours: 19,
@@ -85,8 +76,6 @@ const tests = [
       in: 'come home in 10  seconds 20 minutes  30 hours. Buy milk  and wash car on monday Wash my car ',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'come home',
             target_date: {
                hours: now.getUTCHours() + 30,
@@ -97,8 +86,6 @@ const tests = [
             precisely: false
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'Buy  milk and wash car Wash my car',
             target_date: {
                dates: now.getUTCDate() + (day > 1 ? 7 + 1 - day : 1 - day),
@@ -112,8 +99,6 @@ const tests = [
       in: 'come  home at half past 12',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'come home',
             target_date: {
                hours: 12,
@@ -126,8 +111,6 @@ const tests = [
       in: 'Turn off the gas in 1 hour 20  minutes',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'Turn off the gas',
             target_date: {
                hours: now.getUTCHours() + 1,
@@ -171,7 +154,6 @@ const tests = [
                minutes: 5
             },
             string: '',
-            target_date: {}
          }
       ]
    },
@@ -179,8 +161,6 @@ const tests = [
       in: 'Water flowers after tomorrow at 10 minutes to 7 p.m.',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'Water flowers',
             target_date: {
                dates: now.getUTCDate() + 2,
@@ -196,8 +176,6 @@ const tests = [
       in: 'cake in 20S 2H 5m 5D 20Y and at 7M something',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'cake',
             target_date: {
                dates: now.getUTCDate() + 5,
@@ -210,8 +188,6 @@ const tests = [
             precisely: false
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'something',
             target_date: {
                months: 6
@@ -235,7 +211,6 @@ const tests = [
                hours: 5
             },
             string: 'testset read',
-            target_date: {}
          }
       ]
    },
@@ -250,8 +225,7 @@ const tests = [
             period_time: {
                minutes: 1
             },
-            string: 'multy',
-            target_date: {}
+            string: 'multy'
          },
          {
             max_date: {
@@ -263,12 +237,9 @@ const tests = [
                dates: 4,
                years: 2
             },
-            string: 'test',
-            target_date: {}
+            string: 'test'
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'ok',
             target_date: {
                months: now.getUTCMonth() + 1,
@@ -288,8 +259,7 @@ const tests = [
             period_time: {
                minutes: 40
             },
-            string: 'drink water',
-            target_date: {}
+            string: 'drink water'
          }
       ]
    },
@@ -304,12 +274,9 @@ const tests = [
             period_time: {
                minutes: 30
             },
-            string: 'gest',
-            target_date: {}
+            string: 'gest'
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'something',
             target_date: {
                isOffset: true,
@@ -323,8 +290,6 @@ const tests = [
       in: '---——— in next day, and ———--- in next year',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: '---———',
             target_date: {
                dates: now.getUTCDate() + 1,
@@ -333,8 +298,6 @@ const tests = [
             precisely: false
          },
          {
-            max_date: {},
-            period_time: {},
             string: '———---',
             target_date: {
                isOffset: true,
@@ -348,8 +311,6 @@ const tests = [
       in: 'Today at half past 20 will be evening',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'will be evening',
             target_date: {
                dates: now.getUTCDate(),
@@ -364,15 +325,13 @@ const tests = [
       in: 'test every 3 months 4 hours 10 minutes 5 seconds',
       outs: [
          {
-            max_date: {},
             period_time: {
                dates: 90,
                hours: 4,
                minutes: 10,
                seconds: 5
             },
-            string: 'test',
-            target_date: {}
+            string: 'test'
          }
       ]
    },
@@ -390,8 +349,7 @@ const tests = [
                minutes: 10,
                seconds: 5
             },
-            string: 'test',
-            target_date: {}
+            string: 'test'
          }
       ]
    },
@@ -399,8 +357,6 @@ const tests = [
       in: '12 o\'clock',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: '',
             target_date: {
                hours: 12,

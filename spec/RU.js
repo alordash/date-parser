@@ -9,8 +9,6 @@ const tests = [
       in: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: '31 декабря напомни позвонить послезавтра в центр',
             target_date: {
                dates: now.getUTCDate() + 1,
@@ -22,8 +20,6 @@ const tests = [
             precisely: false
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'завтра в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
             target_date: {
                dates: 31,
@@ -31,8 +27,6 @@ const tests = [
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить в центр',
             target_date: {
                dates: now.getUTCDate() + 2,
@@ -46,8 +40,6 @@ const tests = [
       in: '6 апреля в 15:59, 9 марта за водой в 40 секунд и за хлебом, 20 минут 6 часов 50 июля 45 года и 2010 года но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей. Это новый контекст в 15:00, а то другой, и рядом с ним еще один на 10:00 января.',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: '',
             target_date: {
                dates: 6,
@@ -58,8 +50,6 @@ const tests = [
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'за водой и за хлебом',
             target_date: {
                dates: 9,
@@ -68,8 +58,6 @@ const tests = [
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: '50 июля',
             target_date: {
                hours: 6,
@@ -78,16 +66,12 @@ const tests = [
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей',
             target_date: {
                years: 2010
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'Это новый контекст а то другой',
             target_date: {
                hours: 15,
@@ -96,8 +80,6 @@ const tests = [
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'рядом с ним еще один января',
             target_date: {
                hours: 10,
@@ -111,8 +93,6 @@ const tests = [
       in: 'а 20.12.2020 и 5.05 что-то. то что в 10:20',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'а',
             target_date: {
                dates: 20,
@@ -121,8 +101,6 @@ const tests = [
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'что-то',
             target_date: {
                dates: 5,
@@ -130,8 +108,6 @@ const tests = [
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'то что',
             target_date: {
                hours: 10,
@@ -145,8 +121,6 @@ const tests = [
       in: 'Сходить на улицу в среду без 59 20 утра',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'Сходить на улицу',
             target_date: {
                dates: now.getDate() + (day > 3 ? 7 + 3 - day : 3 - day),
@@ -162,8 +136,6 @@ const tests = [
       in: 'Полить цветы в 10 часов 40 минут 30 секунд утра 13 ноября 2022 года',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'Полить цветы',
             target_date: {
                dates: 13,
@@ -181,8 +153,6 @@ const tests = [
       in: 'Полить цветы вечером в 10 часов 40 минут 30 секунд 13 ноября 2022 года',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'Полить цветы',
             target_date: {
                dates: 13,
@@ -199,8 +169,6 @@ const tests = [
       in: '6 апреля в 15.00 Посылка',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'Посылка',
             target_date: {
                dates: 6,
@@ -216,8 +184,6 @@ const tests = [
       in: '17 декабря в 15.30 к врачу',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'к врачу',
             target_date: {
                dates: 17,
@@ -233,8 +199,6 @@ const tests = [
       in: 'купить в без 20 10 вечера 13 декабря 2030 года',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'купить',
             target_date: {
                dates: 13,
@@ -248,15 +212,13 @@ const tests = [
       ]
    },
    {
-      in: 'test',
+      in: 'пусто',
       outs: []
    },
    {
       in: 'запустить пк послезавтра 30 августа в 5:06 в 2037 году',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'запустить пк 30 августа',
             target_date: {
                dates: now.getUTCDate() + 2,
@@ -269,8 +231,6 @@ const tests = [
             precisely: false
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'запустить пк послезавтра в 5:06 в 2037 году',
             target_date: {
                dates: 30,
@@ -283,8 +243,6 @@ const tests = [
       in: 'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд 13 ноября 2022 года',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'Полить цветы 13 ноября 2022 года',
             target_date: {
                hours: now.getUTCHours() + 10,
@@ -297,8 +255,6 @@ const tests = [
             precisely: false
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд',
             target_date: {
                dates: 13,
@@ -313,8 +269,6 @@ const tests = [
       in: 'Через 10 минут купить цветы, С 10 часов 40 минут 30 секунд вечера 13 ноября 2021 года до 15 января 2023 года Поливать цветы ',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'купить цветы',
             target_date: {
                minutes: now.getUTCMinutes() + 10,
@@ -328,7 +282,6 @@ const tests = [
                months: 0,
                years: 2023
             },
-            period_time: {},
             string: 'Поливать цветы',
             target_date: {
                dates: 13,
@@ -347,7 +300,6 @@ const tests = [
       in: 'что-то каждый понедельник',
       outs: [
          {
-            max_date: {},
             period_time: {
                dates: 7
             },
@@ -363,7 +315,6 @@ const tests = [
       in: 'не что-то каждый день',
       outs: [
          {
-            max_date: {},
             period_time: {
                dates: 1
             },
@@ -389,8 +340,6 @@ const tests = [
             }
          },
          {
-            max_date: {},
-            period_time: {},
             string: '123',
             target_date: {
                years: 25
@@ -407,19 +356,15 @@ const tests = [
                hours: 5,
                minutes: 20
             },
-            period_time: {},
             string: 'что-то',
-            target_date: {}
          }
       ]
    },
    {
-      in: 'азбука через полчаса',
+      in: 'прогулка через полчаса',
       outs: [
          {
-            max_date: {},
-            period_time: {},
-            string: 'азбука',
+            string: 'прогулка',
             target_date: {
                minutes: now.getUTCMinutes() + 30,
                isOffset: true
@@ -432,8 +377,6 @@ const tests = [
       in: 'тест на без 15 10 вечера',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'тест',
             target_date: {
                hours: 21,
@@ -446,8 +389,6 @@ const tests = [
       in: 'кратко через 20С 2ч 5м 5д 20г и в 6М что-то',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'кратко',
             target_date: {
                dates: now.getUTCDate() + 5,
@@ -460,8 +401,6 @@ const tests = [
             precisely: false
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'что-то',
             target_date: {
                months: 5
@@ -473,8 +412,6 @@ const tests = [
       in: 'а тут ты 20 минут утром русский написал и всн',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'а тут ты утром русский написал и всн',
             target_date: {
                isFixed: false,
@@ -488,8 +425,6 @@ const tests = [
       in: 'тест в foo. тест 18:30',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'тест в foo. тест',
             target_date: {
                isFixed: true,
@@ -518,8 +453,7 @@ const tests = [
                isFixed: false,
                isOffset: false
             },
-            string: 'что-т',
-            target_date: {}
+            string: 'что-т'
          }
       ]
    },
@@ -537,12 +471,9 @@ const tests = [
                isFixed: false,
                isOffset: false
             },
-            string: 'тест и еще текст',
-            target_date: {}
+            string: 'тест и еще текст'
          },
          {
-            max_date: {},
-            period_time: {},
             string: 'еще тест',
             target_date: {
                minutes: now.getUTCMinutes() + 4,
@@ -563,8 +494,7 @@ const tests = [
             period_time: {
                minutes: 30,
             },
-            string: 'выпить таблетки',
-            target_date: {}
+            string: 'выпить таблетки'
          }
       ]
    },
@@ -579,8 +509,7 @@ const tests = [
             period_time: {
                minutes: 30
             },
-            string: "тест",
-            target_date: {}
+            string: "тест"
          }
       ]
    },
@@ -588,8 +517,6 @@ const tests = [
       in: 'ч-т-о-т-о в следующий час',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'ч-т-о-т-о',
             target_date: {
                hours: now.getUTCHours() + 1,
@@ -603,8 +530,6 @@ const tests = [
       in: 'отложить через день',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'отложить',
             target_date: {
                dates: now.getUTCDate() + 1,
@@ -618,8 +543,6 @@ const tests = [
       in: 'Сегодня в 21:00 будет вечер',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: 'будет вечер',
             target_date: {
                dates: now.getUTCDate(),
@@ -634,7 +557,6 @@ const tests = [
       in: 'каждые 10 дней в 23.30 текст',
       outs: [
          {
-            max_date: {},
             period_time: {
                dates: 10
             },
@@ -651,15 +573,13 @@ const tests = [
       in: 'тест каждые 3 месяца 4 часа 10 минут 5 секунд',
       outs: [
          {
-            max_date: {},
             period_time: {
                dates: 90,
                hours: 4,
                minutes: 10,
                seconds: 5
             },
-            string: 'тест',
-            target_date: {}
+            string: 'тест'
          }
       ]
    },
@@ -677,8 +597,7 @@ const tests = [
                minutes: 10,
                seconds: 5
             },
-            string: 'тест',
-            target_date: {}
+            string: 'тест'
          }
       ]
    },
@@ -686,8 +605,6 @@ const tests = [
       in: '15 часов',
       outs: [
          {
-            max_date: {},
-            period_time: {},
             string: '',
             target_date: {
                hours: 15,
