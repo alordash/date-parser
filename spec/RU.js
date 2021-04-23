@@ -612,6 +612,27 @@ const tests = [
             }
          }
       ]
+   },
+   {
+      in: '1тест завтра в 2ч, 2тест завтра в 2ч',
+      outs: [
+         {
+            string: '1тест',
+            target_date: {
+               dates: now.getUTCDate() + 1,
+               hours: 2,
+               months: now.getUTCMonth()
+            }
+         },
+         {
+            string: '2тест',
+            target_date: {
+               dates: now.getUTCDate() + 1,
+               hours: 2,
+               months: now.getUTCMonth()
+            }
+         }
+      ]
    }
 ];
 
