@@ -364,6 +364,30 @@ const tests = [
             }
          }
       ]
+   },
+   {
+      in: 'test at 3pm',
+      outs: [
+         {
+            string: 'test',
+            target_date: {
+               hours: 15,
+               isFixed: true
+            }
+         }
+      ]
+   },
+   {
+      in: 'test2 at 3a.m.',
+      outs: [
+         {
+            string: 'test2',
+            target_date: {
+               hours: 3,
+               isFixed: true
+            }
+         }
+      ]
    }
 ];
 
