@@ -354,6 +354,16 @@ const tests = [
                isFixed: true
             }
          })
+      ]),
+   new UT('test at 9.43534 p.m.',
+      [
+         new UTResult({
+            string: 'test',
+            target_date: {
+               hours: 21.43534,
+               isFixed: true
+            }
+         })
       ])
 ];
 

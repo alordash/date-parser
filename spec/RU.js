@@ -566,6 +566,16 @@ const tests = [
                months: now.getUTCMonth()
             }
          })
+      ]),
+   new UT('тест через 1.5 часа',
+      [
+         new UTResult({
+            string: 'тест',
+            target_date: {
+               hours: now.getUTCHours() + 1.5,
+               isOffset: true
+            }
+         })
       ])
 ];
 
