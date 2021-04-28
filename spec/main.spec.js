@@ -1,4 +1,4 @@
-const { UnitTest } = require('./UnitTest');
+const { UT, UTResult } = require('./UnitTest');
 const { parseDate } = require('../lib/date-parser');
 const { isTimeType, isDateType } = require('../lib/date-cases/date-cases');
 const RUtests = require('./RU');
@@ -8,14 +8,14 @@ function formatText(string) {
     return string.replace(/  +/g, ' ');
 }
 
-/**@param {Array.<UnitTest>} tests */
+/**@param {Array.<UT>} tests */
 function RunTests(tests) {
     for (const test of tests) {
-        const results = parseDate(test.in);
-        it(test.in, function () {
+        const results = parseDate(test._in);
+        it(test._in, function () {
             for (let i = 0; i < results.length; i++) {
                 const result = results[i];
-                const out = test.outs[i];
+                const out = test._outs[i];
                 let precise = true;
                 if (typeof (out.precisely) != 'undefined') {
                     precise = out.precisely;

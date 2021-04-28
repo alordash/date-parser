@@ -1,14 +1,13 @@
-const { UnitTest } = require('./UnitTest');
+const { UT, UTResult } = require('./UnitTest');
 
 const now = new Date();
 const day = now.getUTCDay();
 
 /**@type {Array.<UnitTest>} */
 const tests = [
-   {
-      in: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
-      outs: [
-         {
+   new UT('завтра 31 декабря в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
+      [
+         new UTResult({
             string: '31 декабря напомни позвонить послезавтра в центр',
             target_date: {
                dates: now.getUTCDate() + 1,
@@ -18,28 +17,26 @@ const tests = [
                isFixed: true
             },
             precisely: false
-         },
-         {
+         }),
+         new UTResult({
             string: 'завтра в без 1 минут 9 вечера напомни позвонить послезавтра в центр',
             target_date: {
                dates: 31,
                months: 11
             }
-         },
-         {
+         }),
+         new UTResult({
             string: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить в центр',
             target_date: {
                dates: now.getUTCDate() + 2,
                months: now.getUTCMonth()
             },
             precisely: false
-         }
-      ]
-   },
-   {
-      in: '6 апреля в 15:59, 9 марта за водой в 40 секунд и за хлебом, 20 минут 6 часов 50 июля 45 года и 2010 года но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей. Это новый контекст в 15:00, а то другой, и рядом с ним еще один на 10:00 января.',
-      outs: [
-         {
+         })
+      ]),
+   new UT('6 апреля в 15:59, 9 марта за водой в 40 секунд и за хлебом, 20 минут 6 часов 50 июля 45 года и 2010 года но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей. Это новый контекст в 15:00, а то другой, и рядом с ним еще один на 10:00 января.',
+      [
+         new UTResult({
             string: '',
             target_date: {
                dates: 6,
@@ -48,79 +45,75 @@ const tests = [
                months: 3,
                isFixed: true
             }
-         },
-         {
+         }),
+         new UTResult({
             string: 'за водой и за хлебом',
             target_date: {
                dates: 9,
                months: 2,
                seconds: 40
             }
-         },
-         {
+         }),
+         new UTResult({
             string: '50 июля',
             target_date: {
                hours: 6,
                minutes: 20,
                years: 45
             }
-         },
-         {
+         }),
+         new UTResult({
             string: 'но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей',
             target_date: {
                years: 2010
             }
-         },
-         {
+         }),
+         new UTResult({
             string: 'Это новый контекст а то другой',
             target_date: {
                hours: 15,
                minutes: 0,
                isFixed: true
             }
-         },
-         {
+         }),
+         new UTResult({
             string: 'рядом с ним еще один января',
             target_date: {
                hours: 10,
                minutes: 0,
                isFixed: true
             }
-         }
-      ]
-   },
-   {
-      in: 'а 20.12.2020 и 5.05 что-то. то что в 10:20',
-      outs: [
-         {
+         })
+      ]),
+   new UT('а 20.12.2020 и 5.05 что-то. то что в 10:20',
+      [
+         new UTResult({
             string: 'а',
             target_date: {
                dates: 20,
                months: 11,
                years: 2020
             }
-         },
-         {
+         }),
+         new UTResult({
             string: 'что-то',
             target_date: {
                dates: 5,
                months: 4
             }
-         },
-         {
+         }),
+         new UTResult({
             string: 'то что',
             target_date: {
                hours: 10,
                minutes: 20,
                isFixed: true
             }
-         }
-      ]
-   },
-   {
-      in: 'Сходить на улицу в среду без 59 20 утра',
-      outs: [
-         {
+         })
+      ]),
+   new UT('Сходить на улицу в среду без 59 20 утра',
+      [
+         new UTResult({
             string: 'Сходить на улицу',
             target_date: {
                dates: now.getDate() + (day > 3 ? 7 + 3 - day : 3 - day),
@@ -129,13 +122,11 @@ const tests = [
                isFixed: true
             },
             precisely: false
-         }
-      ]
-   },
-   {
-      in: 'Полить цветы в 10 часов 40 минут 30 секунд утра 13 ноября 2022 года',
-      outs: [
-         {
+         })
+      ]),
+   new UT('Полить цветы в 10 часов 40 минут 30 секунд утра 13 ноября 2022 года',
+      [
+         new UTResult({
             string: 'Полить цветы',
             target_date: {
                dates: 13,
@@ -146,13 +137,11 @@ const tests = [
                years: 2022,
                isFixed: true
             }
-         }
-      ]
-   },
-   {
-      in: 'Полить цветы вечером в 10 часов 40 минут 30 секунд 13 ноября 2022 года',
-      outs: [
-         {
+         })
+      ]),
+   new UT('Полить цветы вечером в 10 часов 40 минут 30 секунд 13 ноября 2022 года',
+      [
+         new UTResult({
             string: 'Полить цветы',
             target_date: {
                dates: 13,
@@ -162,13 +151,11 @@ const tests = [
                seconds: 30,
                years: 2022
             }
-         }
-      ]
-   },
-   {
-      in: '6 апреля в 15.00 Посылка',
-      outs: [
-         {
+         })
+      ]),
+   new UT('6 апреля в 15.00 Посылка',
+      [
+         new UTResult({
             string: 'Посылка',
             target_date: {
                dates: 6,
@@ -177,13 +164,11 @@ const tests = [
                months: 3,
                isFixed: true
             }
-         }
-      ]
-   },
-   {
-      in: '17 декабря в 15.30 к врачу',
-      outs: [
-         {
+         })
+      ]),
+   new UT('17 декабря в 15.30 к врачу',
+      [
+         new UTResult({
             string: 'к врачу',
             target_date: {
                dates: 17,
@@ -192,13 +177,11 @@ const tests = [
                months: 11,
                isFixed: true
             }
-         }
-      ]
-   },
-   {
-      in: 'купить в без 20 10 вечера 13 декабря 2030 года',
-      outs: [
-         {
+         })
+      ]),
+   new UT('купить в без 20 10 вечера 13 декабря 2030 года',
+      [
+         new UTResult({
             string: 'купить',
             target_date: {
                dates: 13,
@@ -208,17 +191,14 @@ const tests = [
                years: 2030,
                isFixed: true
             }
-         }
-      ]
-   },
-   {
-      in: 'пусто',
-      outs: []
-   },
-   {
-      in: 'запустить пк послезавтра 30 августа в 5:06 в 2037 году',
-      outs: [
-         {
+         })
+      ]),
+   new UT('пусто',
+      []
+   ),
+   new UT('запустить пк послезавтра 30 августа в 5:06 в 2037 году',
+      [
+         new UTResult({
             string: 'запустить пк 30 августа',
             target_date: {
                dates: now.getUTCDate() + 2,
@@ -229,20 +209,18 @@ const tests = [
                isFixed: true
             },
             precisely: false
-         },
-         {
+         }),
+         new UTResult({
             string: 'запустить пк послезавтра в 5:06 в 2037 году',
             target_date: {
                dates: 30,
                months: 7
             }
-         }
-      ]
-   },
-   {
-      in: 'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд 13 ноября 2022 года',
-      outs: [
-         {
+         })
+      ]),
+   new UT('Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд 13 ноября 2022 года',
+      [
+         new UTResult({
             string: 'Полить цветы 13 ноября 2022 года',
             target_date: {
                hours: now.getUTCHours() + 10,
@@ -253,8 +231,8 @@ const tests = [
                isOffset: true
             },
             precisely: false
-         },
-         {
+         }),
+         new UTResult({
             string: 'Полить цветы через 34 года 2 месяца 10 часов 40 минут 30 секунд',
             target_date: {
                dates: 13,
@@ -262,21 +240,19 @@ const tests = [
                years: 2022,
                isOffset: false
             }
-         }
-      ]
-   },
-   {
-      in: 'Через 10 минут купить цветы, С 10 часов 40 минут 30 секунд вечера 13 ноября 2021 года до 15 января 2023 года Поливать цветы ',
-      outs: [
-         {
+         })
+      ]),
+   new UT('Через 10 минут купить цветы, С 10 часов 40 минут 30 секунд вечера 13 ноября 2021 года до 15 января 2023 года Поливать цветы ',
+      [
+         new UTResult({
             string: 'купить цветы',
             target_date: {
                minutes: now.getUTCMinutes() + 10,
                isOffset: true
             },
             precisely: false
-         },
-         {
+         }),
+         new UTResult({
             max_date: {
                dates: 15,
                months: 0,
@@ -293,13 +269,11 @@ const tests = [
                isOffset: false,
                isFixed: true
             }
-         }
-      ]
-   },
-   {
-      in: 'что-то каждый понедельник',
-      outs: [
-         {
+         })
+      ]),
+   new UT('что-то каждый понедельник',
+      [
+         new UTResult({
             period_time: {
                dates: 7
             },
@@ -308,24 +282,20 @@ const tests = [
                dates: now.getUTCDate() + (day > 1 ? 7 + 1 - day : 1 - day),
             },
             precisely: false
-         }
-      ]
-   },
-   {
-      in: 'не что-то каждый день',
-      outs: [
-         {
+         })
+      ]),
+   new UT('не что-то каждый день',
+      [
+         new UTResult({
             period_time: {
                dates: 1
             },
             string: 'не что-то'
-         }
-      ]
-   },
-   {
-      in: 'то, что каждые 5 секунд 10 минут 23 часов с 5 часов до 7 часов, 123 в 25 году',
-      outs: [
-         {
+         })
+      ]),
+   new UT('то, что каждые 5 секунд 10 минут 23 часов с 5 часов до 7 часов, 123 в 25 году',
+      [
+         new UTResult({
             max_date: {
                hours: 7
             },
@@ -338,57 +308,49 @@ const tests = [
             target_date: {
                hours: 5
             }
-         },
-         {
+         }),
+         new UTResult({
             string: '123',
             target_date: {
                years: 25
             }
-         }
-      ]
-   },
-   {
-      in: 'что-то до 10 числа 5 часов 20 минут',
-      outs: [
-         {
+         })
+      ]),
+   new UT('что-то до 10 числа 5 часов 20 минут',
+      [
+         new UTResult({
             max_date: {
                dates: 10,
                hours: 5,
                minutes: 20
             },
             string: 'что-то',
-         }
-      ]
-   },
-   {
-      in: 'прогулка через полчаса',
-      outs: [
-         {
+         })
+      ]),
+   new UT('прогулка через полчаса',
+      [
+         new UTResult({
             string: 'прогулка',
             target_date: {
                minutes: now.getUTCMinutes() + 30,
                isOffset: true
             },
             precisely: false
-         }
-      ]
-   },
-   {
-      in: 'тест на без 15 10 вечера',
-      outs: [
-         {
+         })
+      ]),
+   new UT('тест на без 15 10 вечера',
+      [
+         new UTResult({
             string: 'тест',
             target_date: {
                hours: 21,
                minutes: 45
             }
-         }
-      ]
-   },
-   {
-      in: 'кратко через 20С 2ч 5м 5д 20г и в 6М что-то',
-      outs: [
-         {
+         })
+      ]),
+   new UT('кратко через 20С 2ч 5м 5д 20г и в 6М что-то',
+      [
+         new UTResult({
             string: 'кратко',
             target_date: {
                dates: now.getUTCDate() + 5,
@@ -399,32 +361,28 @@ const tests = [
                years: now.getUTCFullYear() + 20
             },
             precisely: false
-         },
-         {
+         }),
+         new UTResult({
             string: 'что-то',
             target_date: {
                months: 5
             }
-         }
-      ]
-   },
-   {
-      in: 'а тут ты 20 минут утром русский написал и всн',
-      outs: [
-         {
+         })
+      ]),
+   new UT('а тут ты 20 минут утром русский написал и всн',
+      [
+         new UTResult({
             string: 'а тут ты утром русский написал и всн',
             target_date: {
                isFixed: false,
                isOffset: false,
                minutes: 20
             }
-         }
-      ]
-   },
-   {
-      in: 'тест в foo. тест 18:30',
-      outs: [
-         {
+         })
+      ]),
+   new UT('тест в foo. тест 18:30',
+      [
+         new UTResult({
             string: 'тест в foo. тест',
             target_date: {
                isFixed: true,
@@ -432,13 +390,11 @@ const tests = [
                hours: 18,
                minutes: 30
             }
-         }
-      ]
-   },
-   {
-      in: 'что-т каждые 3 час 2 дней 5 минут по 5 раз',
-      outs: [
-         {
+         })
+      ]),
+   new UT('что-т каждые 3 час 2 дней 5 минут по 5 раз',
+      [
+         new UTResult({
             max_date: {
                minutes: 25,
                hours: 15,
@@ -454,13 +410,11 @@ const tests = [
                isOffset: false
             },
             string: 'что-т'
-         }
-      ]
-   },
-   {
-      in: 'тест 5 минут по 20 раз и еще текст, и еще тест через 4 минуты',
-      outs: [
-         {
+         })
+      ]),
+   new UT('тест 5 минут по 20 раз и еще текст, и еще тест через 4 минуты',
+      [
+         new UTResult({
             max_date: {
                minutes: 100,
                isFixed: false,
@@ -472,21 +426,19 @@ const tests = [
                isOffset: false
             },
             string: 'тест и еще текст'
-         },
-         {
+         }),
+         new UTResult({
             string: 'еще тест',
             target_date: {
                minutes: now.getUTCMinutes() + 4,
                isOffset: true
             },
             precisely: false
-         }
-      ]
-   },
-   {
-      in: 'выпить таблетки 5 раз каждые 30 минут',
-      outs: [
-         {
+         })
+      ]),
+   new UT('выпить таблетки 5 раз каждые 30 минут',
+      [
+         new UTResult({
             max_date: {
                minutes: 150,
                isOffset: true
@@ -495,13 +447,11 @@ const tests = [
                minutes: 30,
             },
             string: 'выпить таблетки'
-         }
-      ]
-   },
-   {
-      in: 'тест каждые полчаса до 10 часов вечера',
-      outs: [
-         {
+         })
+      ]),
+   new UT('тест каждые полчаса до 10 часов вечера',
+      [
+         new UTResult({
             max_date: {
                hours: 22,
                isFixed: true
@@ -510,39 +460,33 @@ const tests = [
                minutes: 30
             },
             string: "тест"
-         }
-      ]
-   },
-   {
-      in: 'ч-т-о-т-о в следующий час',
-      outs: [
-         {
+         })
+      ]),
+   new UT('ч-т-о-т-о в следующий час',
+      [
+         new UTResult({
             string: 'ч-т-о-т-о',
             target_date: {
                hours: now.getUTCHours() + 1,
                isOffset: true
             },
             precisely: false
-         }
-      ]
-   },
-   {
-      in: 'отложить через день',
-      outs: [
-         {
+         })
+      ]),
+   new UT('отложить через день',
+      [
+         new UTResult({
             string: 'отложить',
             target_date: {
                dates: now.getUTCDate() + 1,
                isOffset: true,
             },
             precisely: false
-         }
-      ]
-   },
-   {
-      in: 'Сегодня в 21:00 будет вечер',
-      outs: [
-         {
+         })
+      ]),
+   new UT('Сегодня в 21:00 будет вечер',
+      [
+         new UTResult({
             string: 'будет вечер',
             target_date: {
                dates: now.getUTCDate(),
@@ -550,13 +494,11 @@ const tests = [
                minutes: 0,
                months: now.getUTCMonth()
             },
-         }
-      ]
-   },
-   {
-      in: 'каждые 10 дней в 23.30 текст',
-      outs: [
-         {
+         })
+      ]),
+   new UT('каждые 10 дней в 23.30 текст',
+      [
+         new UTResult({
             period_time: {
                dates: 10
             },
@@ -566,13 +508,11 @@ const tests = [
                isFixed: true,
                minutes: 30
             }
-         }
-      ]
-   },
-   {
-      in: 'тест каждые 3 месяца 4 часа 10 минут 5 секунд',
-      outs: [
-         {
+         })
+      ]),
+   new UT('тест каждые 3 месяца 4 часа 10 минут 5 секунд',
+      [
+         new UTResult({
             period_time: {
                dates: 90,
                hours: 4,
@@ -580,13 +520,11 @@ const tests = [
                seconds: 5
             },
             string: 'тест'
-         }
-      ]
-   },
-   {
-      in: 'тест каждые 3 месяца 4 часа 10 минут 5 секунд до 8 утра',
-      outs: [
-         {
+         })
+      ]),
+   new UT('тест каждые 3 месяца 4 часа 10 минут 5 секунд до 8 утра',
+      [
+         new UTResult({
             max_date: {
                hours: 8,
                isFixed: true
@@ -598,42 +536,37 @@ const tests = [
                seconds: 5
             },
             string: 'тест'
-         }
-      ]
-   },
-   {
-      in: '15 часов',
-      outs: [
-         {
+         })
+      ]),
+   new UT('15 часов',
+      [
+         new UTResult({
             string: '',
             target_date: {
                hours: 15,
                isFixed: true
             }
-         }
-      ]
-   },
-   {
-      in: '1тест завтра в 2ч, 2тест завтра в 2ч',
-      outs: [
-         {
+         })
+      ]),
+   new UT('1тест завтра в 2ч, 2тест завтра в 2ч',
+      [
+         new UTResult({
             string: '1тест',
             target_date: {
                dates: now.getUTCDate() + 1,
                hours: 2,
                months: now.getUTCMonth()
             }
-         },
-         {
+         }),
+         new UTResult({
             string: '2тест',
             target_date: {
                dates: now.getUTCDate() + 1,
                hours: 2,
                months: now.getUTCMonth()
             }
-         }
-      ]
-   }
+         })
+      ])
 ];
 
 module.exports = tests;

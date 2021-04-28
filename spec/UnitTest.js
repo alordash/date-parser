@@ -1,6 +1,6 @@
 const { TimeList } = require('../lib/date-parser');
 
-class UnitTestResult {
+class UTResult {
     /**@type {TimeList} */
     max_date;
     /**@type {TimeList} */
@@ -11,15 +11,41 @@ class UnitTestResult {
     target_date;
     /**@type {Boolean} */
     precisely;
+
+    /**
+     * @param {TimeList} max_date 
+     * @param {TimeList} period_time 
+     * @param {String} string 
+     * @param {TimeList} target_date 
+     * @param {Boolean} precisely 
+     */
+    constructor(obj) {
+        if (typeof (obj) != 'undefined') {
+            let propNames = Object.getOwnPropertyNames(new UTResult());
+            for(const propName of propNames) {
+                this[propName] = obj[propName];
+            }
+        }
+    }
 }
 
-class UnitTest {
+class UT {
     /**@type {String} */
-    in;
-    /**@type {Array.<UnitTestResult>} */
-    outs;
+    _in;
+    /**@type {Array.<UTResult>} */
+    _outs;
+
+    /**
+     * @param {String} _in 
+     * @param {Array.<UTResult>} _outs 
+     */
+    constructor(_in, _outs) {
+        this._in = _in;
+        this._outs = _outs;
+    }
 }
 
 module.exports = {
-    UnitTest
+    UTResult,
+    UT
 };
