@@ -576,7 +576,8 @@ const tests = [
                isOffset: true
             }
          })
-      ])
+      ]),
+   new UT('test 1.5 для', [])
 ];
 
 module.exports = tests;
