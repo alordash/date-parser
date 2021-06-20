@@ -577,7 +577,24 @@ const tests = [
             }
          })
       ]),
-   new UT('test 1.5 для', [])
+   new UT('test 1.5 для', []),
+   new UT('тест 30 мая и что-то 5 июл',
+      [
+         new UTResult({
+            string: 'тест',
+            target_date: {
+               dates: 30,
+               months: 4
+            }
+         }),
+         new UTResult({
+            string: 'что-то',
+            target_date: {
+               dates: 5,
+               months: 6
+            }
+         })
+      ])
 ];
 
 module.exports = tests;

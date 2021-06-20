@@ -364,6 +364,23 @@ const tests = [
                isFixed: true
             }
          })
+      ]),
+   new UT('test at 9 Dec and something at 30 Sept',
+      [
+         new UTResult({
+            string: 'test',
+            target_date: {
+               dates: 9,
+               months: 11
+            }
+         }),
+         new UTResult({
+            string: 'something',
+            target_date: {
+               dates: 30,
+               months: 8
+            }
+         })
       ])
 ];
 
