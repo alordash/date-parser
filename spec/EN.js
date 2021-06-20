@@ -381,6 +381,20 @@ const tests = [
                months: 8
             }
          })
+      ]),
+   new UT('Jun 25 13:02:30 (none)',
+      [
+         new UTResult({
+            string: '(none)',
+            target_date: {
+               dates: 25,
+               hours: 13,
+               minutes: 2,
+               months: 5,
+               seconds: 30,
+               isFixed: true
+            }
+         })
       ])
 ];
 

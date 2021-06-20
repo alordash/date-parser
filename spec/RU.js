@@ -594,7 +594,17 @@ const tests = [
                months: 6
             }
          })
-      ])
+      ]),
+      new UT('Авг 10 что-то',
+         [
+            new UTResult({
+               string: 'что-то',
+               target_date: {
+                  dates: 10,
+                  months: 7
+               }
+            })
+         ])
 ];
 
 module.exports = tests;
