@@ -40,6 +40,7 @@ class UT {
     /**
      * @param {String} _in 
      * @param {Array.<UTResult>} _outs 
+     * @param {Number} _prevalence 
      */
     constructor(_in, _outs, _prevalence = undefined) {
         this._in = _in;
