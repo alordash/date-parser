@@ -595,16 +595,38 @@ const tests = [
             }
          })
       ]),
-      new UT('Авг 10 что-то',
-         [
-            new UTResult({
-               string: 'что-то',
-               target_date: {
-                  dates: 10,
-                  months: 7
-               }
-            })
-         ])
+   new UT('Авг 10 что-то',
+      [
+         new UTResult({
+            string: 'что-то',
+            target_date: {
+               dates: 10,
+               months: 7
+            }
+         })
+      ]),
+   new UT('тест в 9 0 5',
+      [
+         new UTResult({
+            string: 'тест',
+            target_date: {
+               hours: 9,
+               minutes: 5
+            }
+         })
+      ], 20),
+   new UT('есть в 9 0 5', []),
+   new UT('не тест в 9 0',
+      [
+         new UTResult({
+            string: 'не тест',
+            target_date: {
+               hours: 9,
+               minutes: 0
+            }
+         })
+      ], 20),
+   new UT('есть в 9 5 5', [], 20)
 ];
 
 module.exports = tests;

@@ -395,7 +395,29 @@ const tests = [
                isFixed: true
             }
          })
-      ])
+      ]),
+   new UT('test in 19 0 8',
+      [
+         new UTResult({
+            string: 'test',
+            target_date: {
+               hours: 19,
+               minutes: 8
+            }
+         })
+      ], 20),
+   new UT('is in 16 0 5', []),
+   new UT('not test in 23 33',
+      [
+         new UTResult({
+            string: 'not test',
+            target_date: {
+               hours: 23,
+               minutes: 33
+            }
+         })
+      ], 20),
+   new UT('extra at 22 77', [], 20)
 ];
 
 module.exports = tests;
