@@ -34,14 +34,17 @@ class UT {
     _in;
     /**@type {Array.<UTResult>} */
     _outs;
+    /**@type {Number} */
+    _prevalence;
 
     /**
      * @param {String} _in 
      * @param {Array.<UTResult>} _outs 
      */
-    constructor(_in, _outs) {
+    constructor(_in, _outs, _prevalence = undefined) {
         this._in = _in;
         this._outs = _outs;
+        this._prevalence = _prevalence;
     }
 }
 
