@@ -643,6 +643,15 @@ const tests = [
             months: now.getUTCMonth()
          }
       })
+   ]),
+   new UT('тест 48 мая и что-то 5 июл', [
+      new UTResult({
+         string: 'тест 48 мая и что-то',
+         target_date: {
+            dates: 5,
+            months: 6
+         }
+      })
    ])
 ];
 

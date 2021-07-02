@@ -432,6 +432,15 @@ const tests = [
             dates: now.getUTCDate() + 10
          }
       })
+   ]),
+   new UT('on 55 august something and 17 september',[
+      new UTResult({
+         string: 'on 55 august something',
+         target_date: {
+            dates: 17,
+            months: 8
+         }
+      })
    ])
 ];
 
