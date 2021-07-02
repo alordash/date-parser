@@ -20,7 +20,7 @@ class UTResult {
      * @param {Boolean} precisely 
      */
     constructor(obj) {
-        if (typeof (obj) != 'undefined') {
+        if (obj != undefined) {
             let propNames = Object.getOwnPropertyNames(new UTResult());
             for(const propName of propNames) {
                 this[propName] = obj[propName];

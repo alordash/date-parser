@@ -17,7 +17,7 @@ function RunTests(tests) {
                 const result = results[i];
                 const out = test._outs[i];
                 let precise = true;
-                if (typeof (out.precisely) != 'undefined') {
+                if (out.precisely != undefined) {
                     precise = out.precisely;
                 }
                 for (const key in result) {
@@ -26,7 +26,7 @@ function RunTests(tests) {
                     }
                     const res_property = result[key];
                     let out_property = out[key];
-                    if (typeof (out_property) == 'undefined') {
+                    if (out_property == undefined) {
                         out_property = {};
                     }
                     if (!isDateType(key)) {
@@ -36,7 +36,7 @@ function RunTests(tests) {
                             if (!res_property.hasOwnProperty(time_property)) {
                                 continue;
                             }
-                            if (typeof (out_property[time_property]) == 'undefined') {
+                            if (out_property[time_property] == undefined) {
                                 if (isTimeType(time_property)) {
                                     expect(res_property[time_property]).toBe(undefined);
                                 }
