@@ -417,7 +417,22 @@ const tests = [
             }
          })
       ], 20),
-   new UT('extra at 22 77', [], 20)
+   new UT('extra at 22 77', [], 20),
+   new UT('at 17:33 and in 10 days something', [
+      new UTResult({
+         string: 'something',
+         target_date: {
+            hours: 17,
+            minutes: 33
+         }
+      }),
+      new UTResult({
+         string: 'something',
+         target_date: {
+            dates: now.getUTCDate() + 10
+         }
+      })
+   ])
 ];
 
 module.exports = tests;

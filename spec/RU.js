@@ -37,7 +37,7 @@ const tests = [
    new UT('6 апреля в 15:59, 9 марта за водой в 40 секунд и за хлебом, 20 минут 6 часов 50 июля 45 года и 2010 года но и что-нибудь еще возможно, а также проверю разделение на контексты и использование разделителей. Это новый контекст в 15:00, а то другой, и рядом с ним еще один на 10:00 января.',
       [
          new UTResult({
-            string: '',
+            string: 'за водой и за хлебом',
             target_date: {
                dates: 6,
                hours: 15,
@@ -626,7 +626,24 @@ const tests = [
             }
          })
       ], 20),
-   new UT('есть в 9 5 5', [], 20)
+   new UT('есть в 9 5 5', [], 20),
+   new UT('что-то сегодня в 5ч и завтра', [
+      new UTResult({
+         string: 'что-то',
+         target_date: {
+            dates: now.getUTCDate(),
+            months: now.getUTCMonth(),
+            hours: 5
+         }
+      }),
+      new UTResult({
+         string: 'что-то',
+         target_date: {
+            dates: now.getUTCDate() + 1,
+            months: now.getUTCMonth()
+         }
+      })
+   ])
 ];
 
 module.exports = tests;
