@@ -13,6 +13,7 @@ function RunTests(tests) {
     for (const test of tests) {
         const results = parseDate(test._in, undefined, test._prevalence);
         it(test._in, function () {
+            expect(test._outs.length).toBe(results.length);
             for (let i = 0; i < results.length; i++) {
                 const result = results[i];
                 const out = test._outs[i];
