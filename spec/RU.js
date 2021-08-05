@@ -613,6 +613,15 @@ const tests = [
             months: 6
          }
       })
+   ]),
+   new UT('тест через 2 дня', [
+      new UTResult({
+         string: 'тест',
+         target_date: {
+            dates: now.getUTCDate() + 2,
+            isOffset: true
+         }
+      })
    ])
 ];
 
