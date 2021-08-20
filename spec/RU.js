@@ -622,6 +622,17 @@ const tests = [
             isOffset: true
          }
       })
+   ]),
+   new UT('•◘♠♣♦♥☻☺ каждый день до после завтра', [
+      new UTResult({
+         string: '•◘♠♣♦♥☻☺',
+         period_time: {
+            dates: 1
+         },
+         max_date: {
+            dates: now.getUTCDate() + 2
+         }
+      })
    ])
 ];
 

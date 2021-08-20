@@ -422,6 +422,18 @@ const tests = [
             isOffset: true
          }
       })
+   ]),
+   new UT('•◘♠♣♦♥☻☺ every minute 2 days until after tomorrow', [
+      new UTResult({
+         string: '•◘♠♣♦♥☻☺',
+         period_time: {
+            dates: 2,
+            minutes: 1
+         },
+         max_date: {
+            dates: now.getUTCDate() + 2
+         }
+      })
    ])
 ];
 
