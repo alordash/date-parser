@@ -18,12 +18,10 @@ Easy to use, this library allows you to determine dates with absolute precision 
 
 # Documentaion
 
-To use this library correctly, read information about its classes.  
-
 ### TimeList class:
 
 Each property is *Number* that represents value of specific time type.  
-If value is *undefined*, then source string does not contain definition of that time type.  
+If value is *undefined*, then source string did not contain definition of that time type.  
 
 #### Properties:  
 
