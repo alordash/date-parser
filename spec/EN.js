@@ -434,6 +434,107 @@ const tests = [
             dates: now.getUTCDate() + 2
          }
       })
+   ]),
+   new UT(
+      `Aug 18 15:49:04 the test 1
+Aug 19 15:48:04 the test 2
+Aug 20 15:47:04 the test 3
+Aug 21 15:46:04 the test 4
+Aug 22 15:45:04 the test 5
+Aug 23 15:44:04 the test 6
+Aug 24 15:43:04 the test 7
+Aug 25 15:42:04 the test 8
+Aug 26 15:41:03 the test 9`, [
+      new UTResult({
+         string: 'the test 1',
+         target_date: {
+            dates: 18,
+            hours: 15,
+            minutes: 49,
+            seconds: 4,
+            months: 7
+         }
+      }),
+      new UTResult({
+         string: 'the test 2',
+         target_date: {
+            dates: 19,
+            hours: 15,
+            minutes: 48,
+            seconds: 4,
+            months: 7
+         }
+      }),
+      new UTResult({
+         string: 'the test 3',
+         target_date: {
+            dates: 20,
+            hours: 15,
+            minutes: 47,
+            seconds: 4,
+            months: 7
+         }
+      }),
+      new UTResult({
+         string: 'the test 4',
+         target_date: {
+            dates: 21,
+            hours: 15,
+            minutes: 46,
+            seconds: 4,
+            months: 7
+         }
+      }),
+      new UTResult({
+         string: 'the test 5',
+         target_date: {
+            dates: 22,
+            hours: 15,
+            minutes: 45,
+            seconds: 4,
+            months: 7
+         }
+      }),
+      new UTResult({
+         string: 'the test 6',
+         target_date: {
+            dates: 23,
+            hours: 15,
+            minutes: 44,
+            seconds: 4,
+            months: 7
+         }
+      }),
+      new UTResult({
+         string: 'the test 7',
+         target_date: {
+            dates: 24,
+            hours: 15,
+            minutes: 43,
+            seconds: 4,
+            months: 7
+         }
+      }),
+      new UTResult({
+         string: 'the test 8',
+         target_date: {
+            dates: 25,
+            hours: 15,
+            minutes: 42,
+            seconds: 4,
+            months: 7
+         }
+      }),
+      new UTResult({
+         string: 'the test 9',
+         target_date: {
+            dates: 26,
+            hours: 15,
+            minutes: 41,
+            seconds: 3,
+            months: 7
+         }
+      })
    ])
 ];
 

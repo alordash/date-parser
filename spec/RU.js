@@ -633,6 +633,107 @@ const tests = [
             dates: now.getUTCDate() + 2
          }
       })
+   ]),
+   new UT(
+      `Янв 18 15:49:04 номер 1
+Фев 19 15:48:04 номер 2
+Мар 20 15:47:04 номер 3
+Апр 21 15:46:04 номер 4
+Май 22 15:45:04 номер 5
+Июн 23 15:44:04 номер 6
+Июл 24 15:43:04 номер 7
+Сен 25 15:42:04 номер 8
+Ноя 26 15:41:03 номер 9`, [
+      new UTResult({
+         string: 'номер 1',
+         target_date: {
+            dates: 18,
+            hours: 15,
+            minutes: 49,
+            seconds: 4,
+            months: 0
+         }
+      }),
+      new UTResult({
+         string: 'номер 2',
+         target_date: {
+            dates: 19,
+            hours: 15,
+            minutes: 48,
+            seconds: 4,
+            months: 1
+         }
+      }),
+      new UTResult({
+         string: 'номер 3',
+         target_date: {
+            dates: 20,
+            hours: 15,
+            minutes: 47,
+            seconds: 4,
+            months: 2
+         }
+      }),
+      new UTResult({
+         string: 'номер 4',
+         target_date: {
+            dates: 21,
+            hours: 15,
+            minutes: 46,
+            seconds: 4,
+            months: 3
+         }
+      }),
+      new UTResult({
+         string: 'номер 5',
+         target_date: {
+            dates: 22,
+            hours: 15,
+            minutes: 45,
+            seconds: 4,
+            months: 4
+         }
+      }),
+      new UTResult({
+         string: 'номер 6',
+         target_date: {
+            dates: 23,
+            hours: 15,
+            minutes: 44,
+            seconds: 4,
+            months: 5
+         }
+      }),
+      new UTResult({
+         string: 'номер 7',
+         target_date: {
+            dates: 24,
+            hours: 15,
+            minutes: 43,
+            seconds: 4,
+            months: 6
+         }
+      }),
+      new UTResult({
+         string: 'номер 8',
+         target_date: {
+            dates: 25,
+            hours: 15,
+            minutes: 42,
+            seconds: 4,
+            months: 8
+         }
+      }),
+      new UTResult({
+         string: 'номер 9',
+         target_date: {
+            dates: 26,
+            hours: 15,
+            minutes: 41,
+            seconds: 3,
+            months: 10
+         }
+      })
    ])
 ];
 
