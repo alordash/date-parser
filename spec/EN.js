@@ -1,7 +1,16 @@
 const { UT, UTResult } = require('./UnitTest');
 
+
 const now = new Date();
-const day = now.getDay();
+
+const second = now.getUTCSeconds();
+const minute = now.getUTCMinutes();
+const hour = now.getUTCHours();
+const date = now.getUTCDate();
+const day = now.getUTCDay();
+const month = now.getUTCMonth();
+const year = now.getUTCFullYear();
+
 const nextSaturday = (day >= 6 ? 7 + 6 - day : 6 - day);
 
 /**@type {Array.<UT>} */
@@ -50,7 +59,7 @@ const tests = [
    new UT('visit doctor from 9 a.m.  to 11 p.m. on next Saturday and go to shop at 7 p.m.', [
       new UTResult({
          max_date: {
-            dates: now.getUTCDate() + (nextSaturday == 0 ? 7 : nextSaturday),
+            dates: date + (nextSaturday == 0 ? 7 : nextSaturday),
             hours: 23,
             isFixed: true
          },
@@ -73,9 +82,9 @@ const tests = [
       new UTResult({
          string: 'come home',
          target_date: {
-            hours: now.getUTCHours() + 30,
-            minutes: now.getUTCMinutes() + 20,
-            seconds: now.getUTCSeconds() + 10,
+            hours: hour + 30,
+            minutes: minute + 20,
+            seconds: second + 10,
             isOffset: true
          },
          precisely: false
@@ -83,7 +92,7 @@ const tests = [
       new UTResult({
          string: 'Buy  milk and wash car Wash my car',
          target_date: {
-            dates: now.getUTCDate() + (day > 1 ? 7 + 1 - day : 1 - day),
+            dates: date + (day > 1 ? 7 + 1 - day : 1 - day),
             isOffset: false
          },
          precisely: false
@@ -102,8 +111,8 @@ const tests = [
       new UTResult({
          string: 'Turn off the gas',
          target_date: {
-            hours: now.getUTCHours() + 1,
-            minutes: now.getUTCMinutes() + 20
+            hours: hour + 1,
+            minutes: minute + 20
          },
          precisely: false
       })
@@ -143,7 +152,7 @@ const tests = [
       new UTResult({
          string: 'Water flowers',
          target_date: {
-            dates: now.getUTCDate() + 2,
+            dates: date + 2,
             hours: 18,
             isFixed: true,
             minutes: 50
@@ -155,12 +164,12 @@ const tests = [
       new UTResult({
          string: 'cake',
          target_date: {
-            dates: now.getUTCDate() + 5,
-            hours: now.getUTCHours() + 2,
+            dates: date + 5,
+            hours: hour + 2,
             isOffset: true,
-            minutes: now.getUTCMinutes() + 5,
-            seconds: now.getUTCSeconds() + 20,
-            years: now.getUTCFullYear() + 20
+            minutes: minute + 5,
+            seconds: second + 20,
+            years: year + 20
          },
          precisely: false
       }),
@@ -213,7 +222,7 @@ const tests = [
       new UTResult({
          string: 'ok',
          target_date: {
-            months: now.getUTCMonth() + 1,
+            months: month + 1,
             isOffset: true
          }
       })
@@ -245,7 +254,7 @@ const tests = [
          string: 'something',
          target_date: {
             isOffset: true,
-            minutes: now.getUTCMinutes() + 10
+            minutes: minute + 10
          },
          precisely: false
       })
@@ -254,7 +263,7 @@ const tests = [
       new UTResult({
          string: '---———',
          target_date: {
-            dates: now.getUTCDate() + 1,
+            dates: date + 1,
             isOffset: true
          },
          precisely: false
@@ -263,7 +272,7 @@ const tests = [
          string: '———---',
          target_date: {
             isOffset: true,
-            years: now.getUTCFullYear() + 1
+            years: year + 1
          },
          precisely: false
       })
@@ -272,10 +281,10 @@ const tests = [
       new UTResult({
          string: 'will be evening',
          target_date: {
-            dates: now.getUTCDate(),
+            dates: date,
             hours: 20,
             minutes: 30,
-            months: now.getUTCMonth()
+            months: month
          },
       })
    ]),
@@ -401,7 +410,7 @@ const tests = [
       new UTResult({
          string: 'something',
          target_date: {
-            dates: now.getUTCDate() + 10
+            dates: date + 10
          }
       })
    ]),
@@ -418,7 +427,7 @@ const tests = [
       new UTResult({
          string: 'test',
          target_date: {
-            dates: now.getUTCDate() + 2,
+            dates: date + 2,
             isOffset: true
          }
       })
@@ -431,7 +440,7 @@ const tests = [
             minutes: 1
          },
          max_date: {
-            dates: now.getUTCDate() + 2
+            dates: date + 2
          }
       })
    ]),
@@ -533,6 +542,79 @@ Aug 26 15:41:03 the test 9`, [
             minutes: 41,
             seconds: 3,
             months: 7
+         }
+      })
+   ]),
+   new UT('tset in even seconds', [
+      new UTResult({
+         string: 'tset',
+         target_date: {
+            seconds: (second & 1) == 0 ? second + 2 : second + 1
+         },
+         period_time: {
+            seconds: 2
+         }
+      })
+   ]),
+   new UT('tset every even minute until 5 hours pm', [
+      new UTResult({
+         string: 'tset',
+         target_date: {
+            minutes: (minute & 1) == 0 ? minute + 2 : minute + 1
+         },
+         period_time: {
+            minutes: 2
+         },
+         max_date: {
+            hours: 17
+         }
+      })
+   ]),
+   new UT('tset in even hours', [
+      new UTResult({
+         string: 'tset',
+         target_date: {
+            hours: (hour & 1) == 0 ? hour + 2 : hour + 1
+         },
+         period_time: {
+            hours: 2
+         }
+      })
+   ]),
+   new UT('tset in even days', [
+      new UTResult({
+         string: 'tset',
+         target_date: {
+            dates: (date & 1) == 0 ? date + 2 : date + 1
+         },
+         period_time: {
+            dates: 2
+         }
+      })
+   ]),
+   new UT('tset every even month', [
+      new UTResult({
+         string: 'tset',
+         target_date: {
+            months: ((month & 1) == 0 ? month + 2 : month + 1) + 1
+         },
+         period_time: {
+            months: 2
+         }
+      })
+   ]),
+   new UT('tset in odd years until 9 may', [
+      new UTResult({
+         string: 'tset',
+         target_date: {
+            years: (year & 1) == 1 ? year + 2 : year + 1
+         },
+         period_time: {
+            years: 2
+         },
+         max_date: {
+            dates: 9,
+            months: 4
          }
       })
    ])
