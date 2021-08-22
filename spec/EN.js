@@ -1,7 +1,15 @@
 const { UT, UTResult } = require('./UnitTest');
 
+
 const now = new Date();
-const day = now.getDay();
+
+const second = now.getUTCSeconds();
+const minute = now.getUTCMinutes();
+const hour = now.getUTCHours();
+const day = now.getUTCDay();
+const month = now.getUTCMonth();
+const year = now.getUTCFullYear();
+
 const nextSaturday = (day >= 6 ? 7 + 6 - day : 6 - day);
 
 /**@type {Array.<UT>} */
@@ -73,9 +81,9 @@ const tests = [
       new UTResult({
          string: 'come home',
          target_date: {
-            hours: now.getUTCHours() + 30,
-            minutes: now.getUTCMinutes() + 20,
-            seconds: now.getUTCSeconds() + 10,
+            hours: hour + 30,
+            minutes: minute + 20,
+            seconds: second + 10,
             isOffset: true
          },
          precisely: false
@@ -102,8 +110,8 @@ const tests = [
       new UTResult({
          string: 'Turn off the gas',
          target_date: {
-            hours: now.getUTCHours() + 1,
-            minutes: now.getUTCMinutes() + 20
+            hours: hour + 1,
+            minutes: minute + 20
          },
          precisely: false
       })
@@ -156,11 +164,11 @@ const tests = [
          string: 'cake',
          target_date: {
             dates: now.getUTCDate() + 5,
-            hours: now.getUTCHours() + 2,
+            hours: hour + 2,
             isOffset: true,
-            minutes: now.getUTCMinutes() + 5,
-            seconds: now.getUTCSeconds() + 20,
-            years: now.getUTCFullYear() + 20
+            minutes: minute + 5,
+            seconds: second + 20,
+            years: year + 20
          },
          precisely: false
       }),
@@ -213,7 +221,7 @@ const tests = [
       new UTResult({
          string: 'ok',
          target_date: {
-            months: now.getUTCMonth() + 1,
+            months: month + 1,
             isOffset: true
          }
       })
@@ -245,7 +253,7 @@ const tests = [
          string: 'something',
          target_date: {
             isOffset: true,
-            minutes: now.getUTCMinutes() + 10
+            minutes: minute + 10
          },
          precisely: false
       })
@@ -263,7 +271,7 @@ const tests = [
          string: '———---',
          target_date: {
             isOffset: true,
-            years: now.getUTCFullYear() + 1
+            years: year + 1
          },
          precisely: false
       })
@@ -275,7 +283,7 @@ const tests = [
             dates: now.getUTCDate(),
             hours: 20,
             minutes: 30,
-            months: now.getUTCMonth()
+            months: month
          },
       })
    ]),
