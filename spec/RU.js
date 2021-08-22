@@ -849,6 +849,15 @@ const tests = [
             months: 1
          }
       })
+   ]),
+   new UT('н в последний день марта', [
+      new UTResult({
+         string: 'н',
+         target_date: {
+            dates: new Date(Date.UTC(now.getUTCFullYear(), 3, 0)).getUTCDate(),
+            months: 2
+         }
+      })
    ])
 ];
 

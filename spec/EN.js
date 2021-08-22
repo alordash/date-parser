@@ -644,6 +644,15 @@ Aug 26 15:41:03 the test 9`, [
             months: 11
          }
       })
+   ]),
+   new UT('n in last day of november', [
+      new UTResult({
+         string: 'n',
+         target_date: {
+            dates: new Date(Date.UTC(now.getUTCFullYear(), 11, 0)).getUTCDate(),
+            months: 10
+         }
+      })
    ])
 ];
 
