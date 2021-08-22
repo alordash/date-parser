@@ -553,7 +553,8 @@ Aug 26 15:41:03 the test 9`, [
          },
          period_time: {
             seconds: 2
-         }
+         },
+         precisely: false
       })
    ]),
    new UT('tset every even minute until 5 hours pm', [
@@ -615,6 +616,23 @@ Aug 26 15:41:03 the test 9`, [
          max_date: {
             dates: 9,
             months: 4
+         }
+      })
+   ]),
+   new UT('tst at 9th o\'clock', [
+      new UTResult({
+         string: 'tst',
+         target_date: {
+            hours: 9
+         }
+      })
+   ]),
+   new UT('tst on 1st of july', [
+      new UTResult({
+         string: 'tst',
+         target_date: {
+            dates: 1,
+            months: 6
          }
       })
    ])

@@ -750,7 +750,8 @@ const tests = [
          },
          period_time: {
             seconds: 2
-         }
+         },
+         precisely: false
       })
    ]),
    new UT('тсет каждую нечетную минуту до 5 часов', [
@@ -812,6 +813,31 @@ const tests = [
          max_date: {
             dates: 10,
             months: 11
+         }
+      })
+   ]),
+   new UT('тст 10го ноября', [
+      new UTResult({
+         string: 'тст',
+         target_date: {
+            dates: 10,
+            months: 10
+         }
+      })
+   ]),
+   new UT('тст в 11-ом часу', [
+      new UTResult({
+         string: 'тст',
+         target_date: {
+            hours: 11
+         }
+      })
+   ]),
+   new UT('тст в 3-и числах', [
+      new UTResult({
+         string: 'тст',
+         target_date: {
+            dates: 3
          }
       })
    ])
