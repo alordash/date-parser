@@ -5,6 +5,7 @@ const now = new Date();
 const second = now.getUTCSeconds();
 const minute = now.getUTCMinutes();
 const hour = now.getUTCHours();
+const date = now.getUTCDate();
 const day = now.getUTCDay();
 const month = now.getUTCMonth();
 const year = now.getUTCFullYear();
@@ -15,7 +16,7 @@ const tests = [
       new UTResult({
          string: '31 декабря напомни позвонить послезавтра в центр',
          target_date: {
-            dates: now.getUTCDate() + 1,
+            dates: date + 1,
             hours: 20,
             minutes: 59,
             months: month,
@@ -33,7 +34,7 @@ const tests = [
       new UTResult({
          string: 'завтра 31 декабря в без 1 минут 9 вечера напомни позвонить в центр',
          target_date: {
-            dates: now.getUTCDate() + 2,
+            dates: date + 2,
             months: month
          },
          precisely: false
@@ -196,7 +197,7 @@ const tests = [
       new UTResult({
          string: 'запустить пк 30 августа',
          target_date: {
-            dates: now.getUTCDate() + 2,
+            dates: date + 2,
             hours: 5,
             minutes: 6,
             months: month,
@@ -271,7 +272,7 @@ const tests = [
          },
          string: 'что-то',
          target_date: {
-            dates: now.getUTCDate() + (day > 1 ? 7 + 1 - day : 1 - day),
+            dates: date + (day > 1 ? 7 + 1 - day : 1 - day),
          },
          precisely: false
       })
@@ -339,7 +340,7 @@ const tests = [
       new UTResult({
          string: 'кратко',
          target_date: {
-            dates: now.getUTCDate() + 5,
+            dates: date + 5,
             hours: hour + 2,
             isOffset: true,
             minutes: minute + 5,
@@ -456,7 +457,7 @@ const tests = [
       new UTResult({
          string: 'отложить',
          target_date: {
-            dates: now.getUTCDate() + 1,
+            dates: date + 1,
             isOffset: true,
          },
          precisely: false
@@ -466,7 +467,7 @@ const tests = [
       new UTResult({
          string: 'будет вечер',
          target_date: {
-            dates: now.getUTCDate(),
+            dates: date,
             hours: 21,
             minutes: 0,
             months: month
@@ -525,7 +526,7 @@ const tests = [
       new UTResult({
          string: '1тест',
          target_date: {
-            dates: now.getUTCDate() + 1,
+            dates: date + 1,
             hours: 2,
             months: month
          }
@@ -533,7 +534,7 @@ const tests = [
       new UTResult({
          string: '2тест',
          target_date: {
-            dates: now.getUTCDate() + 1,
+            dates: date + 1,
             hours: 2,
             months: month
          }
@@ -598,7 +599,7 @@ const tests = [
       new UTResult({
          string: 'что-то',
          target_date: {
-            dates: now.getUTCDate(),
+            dates: date,
             months: month,
             hours: 5
          }
@@ -606,7 +607,7 @@ const tests = [
       new UTResult({
          string: 'что-то',
          target_date: {
-            dates: now.getUTCDate() + 1,
+            dates: date + 1,
             months: month
          }
       })
@@ -624,7 +625,7 @@ const tests = [
       new UTResult({
          string: 'тест',
          target_date: {
-            dates: now.getUTCDate() + 2,
+            dates: date + 2,
             isOffset: true
          }
       })
@@ -636,7 +637,7 @@ const tests = [
             dates: 1
          },
          max_date: {
-            dates: now.getUTCDate() + 2
+            dates: date + 2
          }
       })
    ]),
@@ -738,6 +739,79 @@ const tests = [
             minutes: 41,
             seconds: 3,
             months: 10
+         }
+      })
+   ]),
+   new UT('тсет в нечетные секунды', [
+      new UTResult({
+         string: 'тсет',
+         target_date: {
+            seconds: (second & 1) == 1 ? second + 2 : second + 1
+         },
+         period_time: {
+            seconds: 2
+         }
+      })
+   ]),
+   new UT('тсет каждую нечетную минуту до 5 часов', [
+      new UTResult({
+         string: 'тсет',
+         target_date: {
+            minutes: (minute & 1) == 1 ? minute + 2 : minute + 1
+         },
+         period_time: {
+            minutes: 2
+         },
+         max_date: {
+            hours: 5
+         }
+      })
+   ]),
+   new UT('тсет в нечетные часы', [
+      new UTResult({
+         string: 'тсет',
+         target_date: {
+            hours: (hour & 1) == 1 ? hour + 2 : hour + 1
+         },
+         period_time: {
+            hours: 2
+         }
+      })
+   ]),
+   new UT('тсет в нечетные дни', [
+      new UTResult({
+         string: 'тсет',
+         target_date: {
+            dates: (date & 1) == 1 ? date + 2 : date + 1
+         },
+         period_time: {
+            dates: 2
+         }
+      })
+   ]),
+   new UT('тсет в нечетные месяцы', [
+      new UTResult({
+         string: 'тсет',
+         target_date: {
+            months: ((month & 1) == 1 ? month + 2 : month + 1) - 1
+         },
+         period_time: {
+            months: 2
+         }
+      })
+   ]),
+   new UT('тсет в четные года до 10 декабря', [
+      new UTResult({
+         string: 'тсет',
+         target_date: {
+            years: (year & 1) == 0 ? year + 2 : year + 1
+         },
+         period_time: {
+            years: 2
+         },
+         max_date: {
+            dates: 10,
+            months: 11
          }
       })
    ])
