@@ -840,6 +840,15 @@ const tests = [
             dates: 3
          }
       })
+   ]),
+   new UT('что-то во 4ый понедельник февраля', [
+      new UTResult({
+         string: 'что-то',
+         target_date: {
+            dates: 2 - (new Date(year, 1)).getDay() + 28,
+            months: 1
+         }
+      })
    ])
 ];
 

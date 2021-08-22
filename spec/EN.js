@@ -635,6 +635,15 @@ Aug 26 15:41:03 the test 9`, [
             months: 6
          }
       })
+   ]),
+   new UT('smth on 2nd friday of december', [
+      new UTResult({
+         string: 'smth',
+         target_date: {
+            dates: 6 - (new Date(year, 11)).getDay() + 14,
+            months: 11
+         }
+      })
    ])
 ];
 
