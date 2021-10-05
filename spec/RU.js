@@ -858,6 +858,14 @@ const tests = [
             months: 2
          }
       })
+   ]),
+   new UT('что-то ежегодно', [
+      new UTResult({
+         string: 'что-то',
+         period_time: {
+            years: 1
+         }
+      })
    ])
 ];
 

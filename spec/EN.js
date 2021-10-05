@@ -653,6 +653,14 @@ Aug 26 15:41:03 the test 9`, [
             months: 10
          }
       })
+   ]),
+   new UT('something annYaly', [
+      new UTResult({
+         string: 'something',
+         period_time: {
+            years: 1
+         }
+      })
    ])
 ];
 
