@@ -6,7 +6,7 @@ $ npm i @alordash/date-parser
 
 ## Links
 
-* [Description in english](README-EN.md)  
+* [English description](README-EN.md)  
 
 # Описание
 
