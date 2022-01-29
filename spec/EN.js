@@ -597,7 +597,7 @@ Aug 26 15:41:03 the test 9`, [
       new UTResult({
          string: 'tset',
          target_date: {
-            months: ((month & 1) == 0 ? month + 2 : month + 1) + 1
+            months: month == 0 ? 1 : ((month & 1) == 0 ? month + 2 : month + 1) + 1
          },
          period_time: {
             months: 2

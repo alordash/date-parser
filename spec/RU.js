@@ -794,7 +794,7 @@ const tests = [
       new UTResult({
          string: 'тсет',
          target_date: {
-            months: ((month & 1) == 1 ? month + 2 : month + 1) - 1
+            months: month == 0 ? 2 : ((month & 1) == 1 ? month + 2 : month + 1) - 1
          },
          period_time: {
             months: 2
