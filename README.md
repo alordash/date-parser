@@ -131,3 +131,7 @@ console.log('событие :>> ', JSON.stringify(result[0].string));
 ```  
 Для не найденных типов времени у target_dates и max_dates используются текущие значения даты (**new Date()**).  
 Для не найденных типов времени у period_times используются значения нулевой даты (**new Date(0)**).  
+
+# Пользовательские настройки
+
+Можно изменить используемые для распознавания csv файлы при помощи функций ``SetExpressionsDirectoryPath(directoryPath: string)`` и ``SetSeparatorsDirectoryPath(directoryPath: string)``.
